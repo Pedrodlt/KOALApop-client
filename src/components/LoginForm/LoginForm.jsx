@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import { Form, Button } from "react-bootstrap"
 import authService from './../../services/auth.services'
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from "../../contexts/auth.context"
+import { AuthContext } from "./../../contexts/auth.context"
 
 const LoginForm = () => {
 
@@ -43,17 +43,17 @@ const LoginForm = () => {
 
 
             <Form.Group className="mb-3" controlId="email">
-                <Form.Label>Email</Form.Label>
+                <Form.Label>@EMAIL</Form.Label>
                 <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="password">
-                <Form.Label>Contraseña</Form.Label>
+                <Form.Label>PASSWORD</Form.Label>
                 <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
             </Form.Group>
 
             <div className="d-grid">
-                <Button variant="dark" type="submit">Acceder</Button>
+                <Button variant="dark" type="submit">GO!</Button>
             </div>
 
         </Form>

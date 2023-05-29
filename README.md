@@ -3,7 +3,7 @@
  `/`                      | INDEX PAGE            | []
  `/login`                 | LOGIN PAGE            | []
  `/register`              | REGISTER PAGE         | []
- `/users/list`            | USERS LISTPAGE        | [x]
+ `/users/list`            | USERS LISTPAGE        | :heavy_check_mark:
  `/users/:id`             | USERS PROF            | [x]
  `/users/:id/products`    | USER PRODUCTS LIST    | [x]
  `/users/create`          | USERS CREATEPG        | [x]
