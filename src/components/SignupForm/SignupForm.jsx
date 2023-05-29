@@ -8,7 +8,11 @@ const SignupForm = () => {
     const [signupData, setSignupData] = useState({
         username: '',
         email: '',
+<<<<<<< HEAD
         password: '',
+=======
+        password: ''
+>>>>>>> 3f081a890c6c10f8ec731abf25d348a0f04ee491
     })
 
     const navigate = useNavigate()
@@ -23,7 +27,11 @@ const SignupForm = () => {
 
         authService
             .signup(signupData)
+<<<<<<< HEAD
             .then(({ data }) => navigate('/'))
+=======
+            .then(({ data }) => navigate('/galeria'))
+>>>>>>> 3f081a890c6c10f8ec731abf25d348a0f04ee491
             .catch(err => console.log(err))
     }
 
@@ -53,7 +61,11 @@ const SignupForm = () => {
 
 
             <div className="d-grid">
+<<<<<<< HEAD
                 <Button variant="dark" type="submit">REGISTER</Button>
+=======
+                <Button variant="dark" type="submit">Registrarme</Button>
+>>>>>>> 3f081a890c6c10f8ec731abf25d348a0f04ee491
             </div>
 
         </Form>

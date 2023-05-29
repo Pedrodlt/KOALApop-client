@@ -11,4 +11,5 @@
  `/products/:id`          | PRODUCT DETAIL        | [x]
  `/products/:id/shipment` | PRODUCTS SHIPMENT     | [x]
  `/products/create`       | PRODUCTS CREATEPG     | [x]
+ `/auction`               | AUCTION HOUSE         | [x]
  `*`                      | 404 PAGE              | []

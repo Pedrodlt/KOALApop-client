@@ -16,10 +16,10 @@ const Navigation = () => {
     return (
         <Navbar expand="lg" bg={variant} variant={variant} className='mb-5'>
             <Container>
-                <Navbar.Brand href="/" className='navTitle' style={{ color: 'white' }}>_KOALApop</Navbar.Brand>
+                <Navbar.Brand href="/" style={{ color: 'white' }}>_KOALApop</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="d-flex">
+                    <Nav className="me-auto">
                         {
                             user
                                 ?
@@ -54,7 +54,7 @@ const Navigation = () => {
                         <Navbar.Text className='navTitle' style={{ color: 'white' }} onClick={switchTheme}>
                             {theme === 'dark' ? '☼' : '☾'}
                         </Navbar.Text>
-                    </div> */}
+                    </div>*/}
                 </Navbar.Collapse>
             </Container>
         </Navbar >
