@@ -1,31 +1,25 @@
-// import { useContext } from 'react'
+import { useContext } from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-// import { ThemeContext } from '../../contexts/theme.context'
-// import { AuthContext } from '../../contexts/auth.context'
+import { ThemeContext } from '../../contexts/theme.context'
+import { AuthContext } from '../../contexts/auth.context'
 
 const Navigation = () => {
 
-    // const { theme, switchTheme } = useContext(ThemeContext)
+    const { theme, switchTheme } = useContext(ThemeContext)
 
-    // const variant = theme === 'light' ? 'dark' : 'light'
+    const variant = theme === 'light' ? 'dark' : 'light'
 
-    // const { user, logout } = useContext(AuthContext)
+    const { user, logout } = useContext(AuthContext)
 
     return (
         <Navbar bg="dark" expand="lg" className='mb-5'>
             <Container>
-                <Navbar.Brand href="#home">Coasters MERN!</Navbar.Brand>
+                <Navbar.Brand href="/" style={{ color: 'white' }}>_KOALApop</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link as="span">
-                            <Link to="/">Inicio</Link>
-                        </Nav.Link>
-                        <Nav.Link as="span">
-                            <Link to="/galeria">Galeria</Link>
-                        </Nav.Link>
-                        {/* {
+                        {
                             user
                                 ?
                                 <>
@@ -39,19 +33,19 @@ const Navigation = () => {
                                 :
                                 <>
                                     <Nav.Link as="span">
-                                        <Link to="/register">Registro</Link>
+                                        <Link to="/register">Sign Up</Link>
                                     </Nav.Link>
                                     <Nav.Link as="span">
                                         <Link to="/login">Login</Link>
                                     </Nav.Link>
                                 </>
-                        } */}
+                        }
                     </Nav>
-                    {/* <div className="justify-content-end">
+                    <div className="justify-content-end">
                         <Navbar.Text onClick={switchTheme}>
                             {theme === 'dark' ? 'Tema claro' : 'Tema oscuro'}
                         </Navbar.Text>
-                    </div> */}
+                    </div>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
