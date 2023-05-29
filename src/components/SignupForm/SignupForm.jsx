@@ -2,18 +2,18 @@ import { useState } from "react"
 import { Form, Button } from "react-bootstrap"
 import authService from './../../services/auth.services'
 import { useNavigate } from "react-router-dom"
+import uploadServices from "../../services/upload.services"
 
 const SignupForm = () => {
 
     const [signupData, setSignupData] = useState({
         username: '',
         email: '',
-<<<<<<< HEAD
         password: '',
-=======
-        password: ''
->>>>>>> 3f081a890c6c10f8ec731abf25d348a0f04ee491
+        avatar: ''
     })
+
+    const [loadingImage, setLoadingImage] = useState(false)
 
     const navigate = useNavigate()
 
@@ -27,16 +27,33 @@ const SignupForm = () => {
 
         authService
             .signup(signupData)
-<<<<<<< HEAD
             .then(({ data }) => navigate('/'))
-=======
-            .then(({ data }) => navigate('/galeria'))
->>>>>>> 3f081a890c6c10f8ec731abf25d348a0f04ee491
             .catch(err => console.log(err))
     }
 
-
     const { username, password, email } = signupData
+
+    const handleFileUpload = e => {
+
+        setLoadingImage(true)
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadServices
+            .uploadimage(formData)
+            .then(res => {
+                setSignupData({ ...signupData, avatar: res.data.cloudinary_url })
+                setLoadingImage(false)
+
+            })
+            .catch(err => {
+                console.log(err)
+                setLoadingImage(false)
+            })
+    }
+
+
 
     return (
 
@@ -59,13 +76,14 @@ const SignupForm = () => {
                 <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
             </Form.Group>
 
+            <Form.Group className="mb-3" controlId="avatar">
+                <Form.Label>Avatar</Form.Label>
+                <Form.Control type="file" onChange={handleFileUpload} />
+            </Form.Group>
+
 
             <div className="d-grid">
-<<<<<<< HEAD
-                <Button variant="dark" type="submit">REGISTER</Button>
-=======
-                <Button variant="dark" type="submit">Registrarme</Button>
->>>>>>> 3f081a890c6c10f8ec731abf25d348a0f04ee491
+                <Button variant="dark" type="submit" disabled={loadingImage} >{loadingImage ? 'Loading Image...' : 'REGISTER'}</Button>
             </div>
 
         </Form>
