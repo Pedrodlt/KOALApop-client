@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { Container, Row, Modal, Button } from "react-bootstrap"
 import productService from "../../services/products.services"
 import ProductsList from "../../components/ProductsList/ProductsList"
-// import NewCoasterForm from "../../components/NewCoasterForm/NewCoasterForm"
+import NewProductForm from "../../components/NewProductForm/NewProductForm"
 // import Loader from "../../components/Loader/Loader"
 import { AuthContext } from "../../contexts/auth.context"
 
@@ -44,14 +44,14 @@ const ProductsListPage = () => {
                 }
             </Row>
 
-            {/* <Modal show={showModal} onHide={() => setShowModal(false)}>
+            <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Nueva montaña rusa</Modal.Title>
+                    <Modal.Title>New Product</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <NewCoasterForm closeModal={() => setShowModal(false)} updateList={loadCoasters} />
+                    <NewProductForm closeModal={() => setShowModal(false)} updateList={loadProducts} />
                 </Modal.Body>
-            </Modal> */}
+            </Modal>
 
 
         </Container>

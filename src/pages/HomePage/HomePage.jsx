@@ -12,7 +12,7 @@ const HomePage = () => {
 
                     <h1>Welcome to KOALApop!</h1>
                     <hr />
-                    <Link to="/galeria">
+                    <Link to="/products/list">
                         <Button variant="dark">Ir a la galería</Button>
                     </Link>
 
