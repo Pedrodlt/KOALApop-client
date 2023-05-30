@@ -47,7 +47,7 @@ const ProductDetailsPage = () => {
                                 <p>{product.description}</p>
                                 <hr />
 
-                                <Link to="/galeria">
+                                <Link to="/products/list">
                                     <Button variant="dark">Volver a la galería</Button>
                                 </Link>
 

@@ -14,7 +14,6 @@ class ProductService {
     }
 
     getOneProduct(product_id) {
-        console.log("+++++++++++++", product_id)
         return this.api.get(`/getOneProduct/${product_id}`)
     }
 
