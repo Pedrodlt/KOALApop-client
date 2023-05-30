@@ -1,0 +1,4 @@
+.UserCard img {
+    height: 120px;
+    object-fit: cover;
+}
