@@ -2,6 +2,8 @@ import { Routes, Route } from 'react-router-dom'
 import HomePage from "./../pages/HomePage/HomePage"
 import SignUpPage from "./../pages/SignUpPage/SignupPage"
 import LoginPage from "../pages/LoginPage/LoginPage"
+import ProductsListPage from "../pages/ProductsListPage/ProductsListPage"
+import ProductDetailsPage from '../pages/ProductsDetailsPage/ProductsDetailsPage'
 
 
 
@@ -13,7 +15,8 @@ const AppRoutes = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/register" element={<SignUpPage />} />
             <Route path="/login" element={<LoginPage />} />
-
+            <Route path="/products/list" element={<ProductsListPage />} />
+            <Route path="/products/:_id" element={<ProductDetailsPage />} />
             {/* <Route path="/perfil" element={<PrivateRoute />}>
                 <Route path="" element={<ProfilePage />} />
             </Route> */}
