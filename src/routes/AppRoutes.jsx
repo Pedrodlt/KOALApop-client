@@ -7,9 +7,6 @@ import ProductDetailsPage from '../pages/ProductsDetailsPage/ProductsDetailsPage
 import UsersListPage from '../pages/UsersListPage/UsersListPage'
 import UserDetailsPage from '../pages/UserDetailsPage/UserDetailsPage'
 
-
-
-
 const AppRoutes = () => {
 
     return (
