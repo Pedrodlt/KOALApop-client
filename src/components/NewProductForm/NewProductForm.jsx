@@ -87,22 +87,16 @@ const NewProductForm = ({ closeModal, updateList }) => {
 
                 </Col>
 
-                <Col>
-                    <Form.Group className="mb-3" controlId="image">
-                        <Form.Label>Image</Form.Label>
-                        <Form.Control type="file" onChange={handleFileUpload} />
-                    </Form.Group>
-                </Col>
-
             </Row>
+
+            <Form.Group className="mb-3" controlId="image">
+                <Form.Label>Image</Form.Label>
+                <Form.Control type="file" onChange={handleFileUpload} />
+            </Form.Group>
 
             <div className="d-grid">
                 <Button variant="dark" type="submit" disabled={loadingImage} >{loadingImage ? 'Loading Image...' : 'REGISTER'}</Button>
             </div>
-
-            {/* <div className="d-grid mt-3">
-                <Button variant="dark" type="submit">Create New Product</Button>
-            </div> */}
         </Form>
     )
 }
