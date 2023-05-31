@@ -3,10 +3,11 @@ import { Container, Row, Modal, Button } from "react-bootstrap"
 import productService from "../../services/products.services"
 import ProductsList from "../../components/ProductsList/ProductsList"
 import NewProductForm from "../../components/NewProductForm/NewProductForm"
+// import EditProductForm from "../../components/EditProductForm/EditProductForm"
 // import Loader from "../../components/Loader/Loader"
 import { AuthContext } from "../../contexts/auth.context"
 
-const ProductsListPage = () => {
+const ProductsListPage = ({ closeModal, updateList }) => {
 
     const [products, setProducts] = useState()
     const [showModal, setShowModal] = useState(false)
@@ -19,7 +20,11 @@ const ProductsListPage = () => {
     const loadProducts = () => {
         productService
             .getAllProducts()
-            .then(({ data }) => setProducts(data))
+            .then(({ data }) => {
+                setProducts(data)
+                closeModal()
+                updateList()
+            })
             .catch(err => console.log(err))
     }
 

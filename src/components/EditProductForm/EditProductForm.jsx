@@ -5,7 +5,7 @@ import uploadServices from "../../services/upload.services"
 
 
 
-const NewProductForm = ({ closeModal, updateList }) => {
+const EditProductForm = ({ closeModal, updateList }) => {
 
     const [productData, setProductData] = useState({
         title: '',
@@ -28,11 +28,10 @@ const NewProductForm = ({ closeModal, updateList }) => {
         event.preventDefault()
 
         productService
-            .saveProduct(productData)
+            .editProduct(productData)
             .then(() => {
                 closeModal()
                 updateList()
-
             })
             .catch(err => console.log(err))
     }
@@ -95,10 +94,10 @@ const NewProductForm = ({ closeModal, updateList }) => {
             </Form.Group>
 
             <div className="d-grid">
-                <Button variant="dark" type="submit" disabled={loadingImage} >{loadingImage ? 'Loading Image...' : 'Upload'}</Button>
+                <Button variant="dark" type="submit" disabled={loadingImage} >{loadingImage ? 'Loading Image...' : 'Update'}</Button>
             </div>
         </Form>
     )
 }
 
-export default NewProductForm
+export default EditProductForm

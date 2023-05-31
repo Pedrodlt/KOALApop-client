@@ -1,13 +1,18 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import productService from "../../services/products.services"
-import { Row, Col, Container, Button } from "react-bootstrap"
+import { Row, Col, Container, Button, Modal } from "react-bootstrap"
+import { AuthContext } from './../../contexts/auth.context'
+import EditProductForm from '../EditProductPage/EditProductPage'
 // import Loader from "../../components/Loader/Loader"
 
 
 const ProductDetailsPage = () => {
 
     const { _id } = useParams()
+    const { user } = useContext(AuthContext)
+
+    const [showModal, setShowModal] = useState(false)
 
 
     const [product, setProduct] = useState()
@@ -20,13 +25,13 @@ const ProductDetailsPage = () => {
         productService
             .getOneProduct(_id)
             .then(({ data }) => {
-                console.log(product)
+                // console.log()
                 setProduct(data)
             })
             .catch(err => console.log(err))
     }
 
-
+    // console.log(user, product.owner)
 
     return (
         <Container>
@@ -51,6 +56,11 @@ const ProductDetailsPage = () => {
                                     <Button variant="dark">Volver a la galería</Button>
                                 </Link>
 
+
+                                {
+                                    user?._id === product.owner && <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
+                                }
+
                             </Col>
 
                             <Col md={{ span: 4 }}>
@@ -58,6 +68,15 @@ const ProductDetailsPage = () => {
                             </Col>
 
                         </Row>
+
+                        <Modal show={showModal} onHide={() => setShowModal(false)}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>Edit Product</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <EditProductForm closeModal={() => setShowModal(false)} updateList={loadProduct} />
+                            </Modal.Body>
+                        </Modal>
                     </>
             }
 
