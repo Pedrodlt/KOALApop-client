@@ -11,7 +11,7 @@ const LoginPage = () => {
 
                 <Col md={{ offset: 3, span: 6 }}>
 
-                    <h1>Inicio de sesión</h1>
+                    <h1>Sign Up</h1>
 
                     <hr />
 

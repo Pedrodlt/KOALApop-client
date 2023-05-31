@@ -4,7 +4,7 @@ import productService from "../../services/products.services"
 import { Row, Col, Container, Button, Modal } from "react-bootstrap"
 import { AuthContext } from './../../contexts/auth.context'
 import EditProductForm from '../EditProductPage/EditProductPage'
-// import Loader from "../../components/Loader/Loader"
+import Loader from "../../components/Loader/Loader"
 
 
 const ProductDetailsPage = () => {
@@ -43,8 +43,8 @@ const ProductDetailsPage = () => {
             {
                 !product
                     ?
-                    <h1>CHARGING.....</h1>
-                    // <Loader />
+                    // <h1>CHARGING.....</h1>
+                    <Loader />
                     :
                     <>
                         <h1>Detalles de {product.title}</h1>

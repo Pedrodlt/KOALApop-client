@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom"
 import userService from "../../services/user.services"
 import { Row, Col, Container, Button, Modal } from "react-bootstrap"
 import EditUserForm from "../../components/EditUserForm/EditUserForm"
-// import Loader from "../../components/Loader/Loader"
+import Loader from "../../components/Loader/Loader"
 
 const UserDetailsPage = () => {
 
@@ -43,8 +43,8 @@ const UserDetailsPage = () => {
             {
                 !user
                     ?
-                    <h1>CHARGING.....</h1>
-                    // <Loader />
+                    // <h1>CHARGING.....</h1>
+                    <Loader />
                     :
                     <>
                         <h1>Detalles de {user.username}</h1>

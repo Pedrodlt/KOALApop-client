@@ -41,7 +41,7 @@ const Navigation = () => {
                                     </Nav.Link>
                                 </Nav>
                                 <Nav.Link as="span">
-                                    <Link to="/users/:id" className='navTitle'>¡Heleu, {user.username}!</Link>
+                                    <Link to="/profile" className='navTitle'>¡Heleu, {user.username}!</Link>
                                 </Nav.Link>
                                 <Nav.Link className='navTitle justify-content-right mx-2' style={{ color: 'white' }} as="span" onClick={handleLogout}>Logout</Nav.Link>
                             </>

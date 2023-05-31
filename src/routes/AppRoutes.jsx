@@ -6,6 +6,10 @@ import ProductsListPage from "../pages/ProductsListPage/ProductsListPage"
 import ProductDetailsPage from '../pages/ProductsDetailsPage/ProductsDetailsPage'
 import UsersListPage from '../pages/UsersListPage/UsersListPage'
 import UserDetailsPage from '../pages/UserDetailsPage/UserDetailsPage'
+import ProfilePage from '../pages/ProfilePage/ProfilePage'
+import PrivateRoutes from './PrivateRoutes'
+
+
 
 const AppRoutes = () => {
 
@@ -19,9 +23,10 @@ const AppRoutes = () => {
             <Route path="/products/:_id" element={<ProductDetailsPage />} />
             <Route path="/users/list" element={<UsersListPage />} />
             <Route path="/users/:_id" element={<UserDetailsPage />} />
-            {/* <Route path="/perfil" element={<PrivateRoute />}>
+
+            <Route path="/profile" element={<PrivateRoutes />}>
                 <Route path="" element={<ProfilePage />} />
-            </Route> */}
+            </Route>
 
             <Route path="*" element={<h1>404</h1>} />
         </Routes>

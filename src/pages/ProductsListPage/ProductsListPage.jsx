@@ -4,7 +4,7 @@ import productService from "../../services/products.services"
 import ProductsList from "../../components/ProductsList/ProductsList"
 import NewProductForm from "../../components/NewProductForm/NewProductForm"
 // import EditProductForm from "../../components/EditProductForm/EditProductForm"
-// import Loader from "../../components/Loader/Loader"
+import Loader from "../../components/Loader/Loader"
 import { AuthContext } from "../../contexts/auth.context"
 
 const ProductsListPage = ({ closeModal, updateList }) => {
@@ -42,8 +42,8 @@ const ProductsListPage = ({ closeModal, updateList }) => {
                 {
                     !products
                         ?
-                        <h1>CHARGING.....</h1>
-                        // <Loader />
+                        // <h1>CHARGING.....</h1>
+                        <Loader />
                         :
                         <ProductsList products={products} />//ESTE ES EL COMPONENTE PENDIENTE
                 }

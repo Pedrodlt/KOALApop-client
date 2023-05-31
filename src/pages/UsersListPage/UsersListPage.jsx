@@ -2,8 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { Container, Row, Modal, Button } from "react-bootstrap"
 import userService from "../../services/user.services"
 import UsersList from "../../components/UsersList/UsersList"
-// import NewCoasterForm from "../../components/NewCoasterForm/NewCoasterForm"
-// import Loader from "../../components/Loader/Loader"
+import Loader from "../../components/Loader/Loader"
 import { AuthContext } from "../../contexts/auth.context"
 
 const UserListPage = () => {
@@ -37,8 +36,8 @@ const UserListPage = () => {
                 {
                     !users
                         ?
-                        <h1>CHARGING.....</h1>
-                        // <Loader />
+                        // <h1>CHARGING.....</h1>
+                        <Loader />
                         :
                         <UsersList users={users} />//ESTE ES EL COMPONENTE PENDIENTE
                 }
