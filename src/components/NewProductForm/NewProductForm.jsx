@@ -17,8 +17,11 @@ const NewProductForm = ({ closeModal, updateList }) => {
     })
 
     const [loadingImage, setLoadingImage] = useState(false)
+<<<<<<< HEAD
     const [errors, setErrors] = useState([])
 
+=======
+>>>>>>> 5f7cbe0a4da9913e7a8767044d51df09d3277da5
 
     const handleInputChange = event => {
         const { name, value } = event.target
