@@ -30,11 +30,11 @@ class UserService {
     }
 
     editUser(user_id, userData) {
-        return this.api.post('/editUser', user_id, userData)
+        return this.api.put(`/editUser/${user_id}`, userData)
     }
 
     deleteUser(user_id) {
-        return this.api.post('/deleteUser', user_id)
+        return this.api.delete(`/deleteUser/${user_id}`)
     }
 }
 
