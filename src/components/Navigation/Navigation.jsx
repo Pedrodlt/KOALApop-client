@@ -12,7 +12,9 @@ const Navigation = () => {
     const variant = theme === 'light' ? 'dark' : 'light'
 
     const { user, logout } = useContext(AuthContext)
+
     const navigate = useNavigate()
+
     const handleLogout = () => {
         logout()
         navigate('/')
