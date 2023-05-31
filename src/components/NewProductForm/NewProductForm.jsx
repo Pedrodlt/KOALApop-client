@@ -17,8 +17,6 @@ const NewProductForm = ({ closeModal, updateList }) => {
 
     const [loadingImage, setLoadingImage] = useState(false)
 
-
-
     const handleInputChange = event => {
         const { name, value } = event.target
         setProductData({ ...productData, [name]: value })
