@@ -36,8 +36,8 @@ const ProductCard = ({ title, image, _id, /* owner */ }) => {
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
                     <div className="d-grid">
-                        <Link to={`/products/${_id}`} >
-                            <Button variant="dark" size="sm">Details</Button>
+                        <Link to={`/products/${_id}`} className="btn btn-dark btn-sm">
+                            {/* <Button variant="dark" size="sm"> */}Details{/* </Button> */}
                         </Link>
                         {/* {
                             user?._id === owner && <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>

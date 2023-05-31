@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useNavigate } from "react-router-dom"
 import productService from "../../services/products.services"
 import { Row, Col, Container, Button, Modal } from "react-bootstrap"
 import { AuthContext } from './../../contexts/auth.context'
@@ -13,8 +13,8 @@ const ProductDetailsPage = () => {
     const { user } = useContext(AuthContext)
 
     const [showModal, setShowModal] = useState(false)
-
-
+    const navigate = useNavigate()
+    console.log(showModal)
     const [product, setProduct] = useState()
 
     useEffect(() => {
@@ -25,12 +25,17 @@ const ProductDetailsPage = () => {
         productService
             .getOneProduct(_id)
             .then(({ data }) => {
-                // console.log()
                 setProduct(data)
             })
             .catch(err => console.log(err))
     }
+    const handleDelete = () => {
 
+        productService
+            .deleteProduct(_id)
+            .then(() => navigate('/products/list'))
+            .catch(err => console.log(err))
+    }
     // console.log(user, product.owner)
 
     return (
@@ -59,6 +64,9 @@ const ProductDetailsPage = () => {
 
                                 {
                                     user?._id === product.owner && <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
+                                }
+                                {
+                                    user?._id === product.owner && <Button variant="alert" size="sm" onClick={() => handleDelete()}>DELETE</Button>
                                 }
 
                             </Col>

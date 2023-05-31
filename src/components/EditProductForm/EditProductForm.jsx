@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useParams } from "react-router-dom"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import productService from "../../services/products.services"
 import uploadServices from "../../services/upload.services"
@@ -17,7 +18,7 @@ const EditProductForm = ({ closeModal, updateList }) => {
 
     const [loadingImage, setLoadingImage] = useState(false)
 
-
+    const { _id } = useParams()
 
     const handleInputChange = event => {
         const { name, value } = event.target
@@ -28,7 +29,7 @@ const EditProductForm = ({ closeModal, updateList }) => {
         event.preventDefault()
 
         productService
-            .editProduct(productData)
+            .editProduct(_id, productData)
             .then(() => {
                 closeModal()
                 updateList()

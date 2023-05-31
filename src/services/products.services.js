@@ -34,11 +34,11 @@ class ProductService {
     }
 
     editProduct(product_id, productData) {
-        return this.api.post('/editProduct', product_id, productData)
+        return this.api.put(`/editProduct/${product_id}`, productData)
     }
 
     deleteProduct(product_id) {
-        return this.api.post('/deleteProduct', product_id)
+        return this.api.delete(`/deleteProduct/${product_id}`)
     }
 }
 
