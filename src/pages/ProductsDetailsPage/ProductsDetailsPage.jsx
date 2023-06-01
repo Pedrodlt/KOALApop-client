@@ -76,14 +76,15 @@ const ProductDetailsPage = () => {
                                 <img src={product.image} style={{ width: '100%' }} />
 
                                 {
-                                    !product.owner
-                                    &&
-                                    <>
-                                        <Link to={`/products/${_id}/purchase`}>
-                                            <Button variant="warning" size="sm" id={_id}>BUY</Button>
-                                        </Link>
-
-                                    </>
+                                    user._id !== product.owner
+                                        ?
+                                        <>
+                                            <Link to={`/products/${_id}/purchase`}>
+                                                <Button variant="warning" size="sm" id={_id}>BUY</Button>
+                                            </Link>
+                                        </>
+                                        :
+                                        <p>Your Product</p>
                                 }
 
                             </Col>

@@ -14,8 +14,6 @@ const Navigation = () => {
 
     const [profileUser, setProfileUser] = useState(null)
 
-    console.log(profileUser, user)
-
     const navigate = useNavigate()
 
     const variant = theme === 'light' ? 'dark' : 'light'

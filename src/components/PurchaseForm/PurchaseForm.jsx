@@ -3,34 +3,19 @@ import { Form, Button, Row, Col } from "react-bootstrap"
 import productService from "../../services/products.services"
 import uploadServices from "../../services/upload.services"
 import FormError from "../FormError/FormError"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 const PurchaseForm = ({ updateList, _id, data }) => {
 
-    console.log('oerijuhfiuerfiuherfiu', data)
     const [productData, setProductData] = useState({
-        title: '',
-        description: '',
-        category: '',
-        price: '',
-        image: ''
+        fullName: '',
+        email: '',
+        address: ''
     })
 
     const [errors, setErrors] = useState([])
 
-    useEffect(() => {
-        loadProduct()
-    }, [])
-    const loadProduct = () => {
-
-        productService
-            .getOneProduct(_id)
-            .then(({ data }) => {
-                setProductData(data)
-            })
-            .catch(err => console.log(err))
-    }
-
+    const navigate = useNavigate()
 
     const handleInputChange = event => {
         const { name, value } = event.target
@@ -41,55 +26,53 @@ const PurchaseForm = ({ updateList, _id, data }) => {
         event.preventDefault()
 
         productService
-            .editProduct(_id, productData)
-            .then(() => {
-                updateList()
-
+            .editProduct(data._id, { buyerInfo: productData })
+            .then((response) => {
+                console.log(response)
+                navigate('/')
             })
             .catch(err => {
                 setErrors(err.response.data.errorMessages)
             })
     }
 
-    const { title, description, price } = productData
-
     return (
         <Form onSubmit={handleSubmit}>
             <div>
                 <h5>Product Information</h5>
             </div>
-            <Form.Group className="mb-3" controlId="title">
+            <Form.Group className="mb-3" >
                 <Form.Label>Title</Form.Label>
-                <Form.Control type="text" value={data.title} onChange={handleInputChange} name="title" />
+                <Form.Control type="text" value={data.title} disabled={true} />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="description">
+            <Form.Group className="mb-3" >
                 <Form.Label>Description</Form.Label>
-                <Form.Control type="text" value={data.description} onChange={handleInputChange} name="description" />
+                <Form.Control type="text" value={data.description} disabled={true} />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="price">
+            <Form.Group className="mb-3" >
                 <Form.Label>Price</Form.Label>
-                <Form.Control type="text" value={data.price} onChange={handleInputChange} name="price" />
+                <Form.Control type="text" value={data.price} disabled={true} />
             </Form.Group>
 
             <div>
                 <h5>Buyer Information</h5>
             </div>
 
-            <Form.Group className="mb-3" controlId="title">
-                <Form.Label>Title</Form.Label>
-                <Form.Control type="text" onChange={handleInputChange} name="title" />
+            <Form.Group className="mb-3" controlId="fullName">
+                <Form.Label>Full Name</Form.Label>
+                <Form.Control type="text" onChange={handleInputChange} name="fullName" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="title">
-                <Form.Label>Title</Form.Label>
-                <Form.Control type="text" onChange={handleInputChange} name="title" />
+            <Form.Group className="mb-3" controlId="email">
+                <Form.Label>@Email</Form.Label>
+                <Form.Control type="text" onChange={handleInputChange} name="email" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="title">
-                <Form.Label>Title</Form.Label>
-                <Form.Control type="text" onChange={handleInputChange} name="title" />
+            <Form.Group className="mb-3" controlId="address">
+                <Form.Label>Shipment Details</Form.Label>
+                <Form.Control type="text" onChange={handleInputChange} name="address" />
             </Form.Group>
 
             {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
