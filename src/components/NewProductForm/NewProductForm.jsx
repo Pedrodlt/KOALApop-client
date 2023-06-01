@@ -17,11 +17,8 @@ const NewProductForm = ({ closeModal, updateList }) => {
     })
 
     const [loadingImage, setLoadingImage] = useState(false)
-<<<<<<< HEAD
     const [errors, setErrors] = useState([])
 
-=======
->>>>>>> 5f7cbe0a4da9913e7a8767044d51df09d3277da5
 
     const handleInputChange = event => {
         const { name, value } = event.target
@@ -34,9 +31,8 @@ const NewProductForm = ({ closeModal, updateList }) => {
         productService
             .saveProduct(productData)
             .then(() => {
-                closeModal()
                 updateList()
-
+                closeModal()
             })
             .catch(err => {
                 setErrors(err.response.data.errorMessages)
@@ -57,10 +53,8 @@ const NewProductForm = ({ closeModal, updateList }) => {
             .then(res => {
                 setProductData({ ...productData, image: res.data.cloudinary_url })
                 setLoadingImage(false)
-
             })
             .catch(err => {
-                console.log(err)
                 setLoadingImage(false)
             })
     }
@@ -101,6 +95,7 @@ const NewProductForm = ({ closeModal, updateList }) => {
             </Form.Group>
 
             {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
+
             <div className="d-grid">
                 <Button variant="dark" type="submit" disabled={loadingImage} >{loadingImage ? 'Loading Image...' : 'Upload'}</Button>
             </div>

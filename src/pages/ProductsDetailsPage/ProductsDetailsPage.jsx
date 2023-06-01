@@ -13,9 +13,8 @@ const ProductDetailsPage = () => {
     const { user } = useContext(AuthContext)
 
     const [showModal, setShowModal] = useState(false)
-    const navigate = useNavigate()
-    console.log(showModal)
     const [product, setProduct] = useState()
+    const navigate = useNavigate()
 
     useEffect(() => {
         loadProduct()
@@ -63,10 +62,12 @@ const ProductDetailsPage = () => {
 
 
                                 {
-                                    user?._id === product.owner && <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
-                                }
-                                {
-                                    user?._id === product.owner && <Button variant="alert" size="sm" onClick={() => handleDelete()}>DELETE</Button>
+                                    user?._id === product.owner
+                                    &&
+                                    <>
+                                        <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
+                                        <Button variant="alert" size="sm" onClick={() => handleDelete()}>DELETE</Button>
+                                    </>
                                 }
 
                             </Col>

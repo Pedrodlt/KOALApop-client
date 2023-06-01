@@ -22,8 +22,8 @@ const ProductsListPage = ({ closeModal, updateList }) => {
             .getAllProducts()
             .then(({ data }) => {
                 setProducts(data)
-                closeModal()
                 updateList()
+                closeModal()
             })
             .catch(err => console.log(err))
     }

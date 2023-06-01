@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useParams, Link, useNavigate } from "react-router-dom"
 import userService from "../../services/user.services"
 import { Row, Col, Container, Button, Modal } from "react-bootstrap"
 import EditUserForm from "../../components/EditUserForm/EditUserForm"
 import Loader from "../../components/Loader/Loader"
+import { AuthContext } from "../../contexts/auth.context"
 
 const UserDetailsPage = () => {
 
     const { _id } = useParams()
 
-    // const{user}=useContext(Aut)
+    const { user, logout } = useContext(AuthContext)
 
-    const [user, setUsers] = useState()
+    const [profileUser, setProfileUser] = useState()
 
     const [showModal, setShowModal] = useState(false)
 
@@ -25,36 +26,38 @@ const UserDetailsPage = () => {
         userService
             .getOneUser(_id)
             .then(({ data }) => {
-                setUsers(data)
+                setProfileUser(data)
             })
             .catch(err => console.log(err))
     }
 
     const handleDelete = () => {
-
         userService
             .deleteUser(_id)
-            .then(() => navigate('/users/list'))
+            .then(() => {
+                logout()
+                navigate('/users/list')
+            })
             .catch(err => console.log(err))
     }
 
     return (
         <Container>
             {
-                !user
+                !profileUser
                     ?
                     // <h1>CHARGING.....</h1>
                     <Loader />
                     :
                     <>
-                        <h1>Detalles de {user.username}</h1>
+                        <h1>Detalles de {profileUser.username}</h1>
                         <hr />
 
                         <Row>
 
                             <Col md={{ span: 6 }}>
                                 <h3>Especificaciones</h3>
-                                <p>{user.email}</p>
+                                <p>{profileUser.email}</p>
                                 <hr />
 
                                 <Link to="/users/list">
@@ -62,17 +65,19 @@ const UserDetailsPage = () => {
                                 </Link>
 
                                 {
-                                    user?._id === _id && <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
+                                    user?._id === _id
+                                    &&
+                                    <>
+                                        <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
+                                        <Button variant="warning" size="sm" onClick={() => handleDelete()}>DELETE</Button>
+                                    </>
 
                                 }
 
-                                {
-                                    user?._id === _id && <Button variant="warning" size="sm" onClick={() => handleDelete()}>DELETE</Button>
-                                }
                             </Col>
 
                             <Col md={{ span: 4 }}>
-                                <img src={user.avatar} style={{ width: '100%' }} />
+                                <img src={profileUser.avatar} style={{ width: '100%' }} />
                             </Col>
 
                         </Row>
