@@ -4,8 +4,6 @@ import { Form, Button, Row, Col } from "react-bootstrap"
 import productService from "../../services/products.services"
 import uploadServices from "../../services/upload.services"
 
-
-
 const EditProductForm = ({ closeModal, updateList }) => {
 
     const [productData, setProductData] = useState({
