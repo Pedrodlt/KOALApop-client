@@ -22,8 +22,8 @@ const ProductsListPage = ({ closeModal, updateList }) => {
             .getAllProducts()
             .then(({ data }) => {
                 setProducts(data)
-                closeModal()
                 updateList()
+                closeModal()
             })
             .catch(err => console.log(err))
     }
@@ -34,7 +34,7 @@ const ProductsListPage = ({ closeModal, updateList }) => {
             <h1>PRODUCTS LIST</h1>
 
             {
-                user && <Button variant="dark" size="sm" onClick={() => setShowModal(true)}>Create New Product</Button>
+                user && <Button variant="dark" size="sm" onClick={() => setShowModal(true)}>Sell Product</Button>
             }
 
             <hr />

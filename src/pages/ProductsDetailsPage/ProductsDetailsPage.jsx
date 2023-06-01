@@ -36,7 +36,7 @@ const ProductDetailsPage = () => {
             .then(() => navigate('/products/list'))
             .catch(err => console.log(err))
     }
-    // console.log(user, product.owner)
+
 
     return (
         <Container>

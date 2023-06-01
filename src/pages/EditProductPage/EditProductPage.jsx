@@ -1,13 +1,13 @@
 import { Container } from "react-bootstrap"
 import EditProductForm from "../../components/EditProductForm/EditProductForm"
 
-const EditProductPage = () => {
+const EditProductPage = ({ closeModal, updateList }) => {
 
     return (
         <Container>
             <h1>Edit Product</h1>
             <hr />
-            <EditProductForm />
+            <EditProductForm closeModal={closeModal} updateList={updateList} />
         </Container>
     )
 }

@@ -62,12 +62,12 @@ const UserDetailsPage = () => {
                                 </Link>
 
                                 {
-                                    user?._id === _id && <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
-
-                                }
-
-                                {
-                                    user?._id === _id && <Button variant="warning" size="sm" onClick={() => handleDelete()}>DELETE</Button>
+                                    user?._id === _id
+                                    &&
+                                    <>
+                                        <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
+                                        <Button variant="warning" size="sm" onClick={() => handleDelete()}>DELETE</Button>
+                                    </>
                                 }
                             </Col>
 
