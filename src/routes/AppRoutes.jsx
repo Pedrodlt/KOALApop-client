@@ -8,8 +8,7 @@ import UsersListPage from '../pages/UsersListPage/UsersListPage'
 import UserDetailsPage from '../pages/UserDetailsPage/UserDetailsPage'
 import ProfilePage from '../pages/ProfilePage/ProfilePage'
 import PrivateRoutes from './PrivateRoutes'
-
-
+import PurchasePage from '../pages/PurchasePage/PurchasePage'
 
 const AppRoutes = () => {
 
@@ -23,6 +22,8 @@ const AppRoutes = () => {
             <Route path="/products/:_id" element={<ProductDetailsPage />} />
             <Route path="/users/list" element={<UsersListPage />} />
             <Route path="/users/:_id" element={<UserDetailsPage />} />
+            <Route path="/products/:product_id/purchase" element={<PurchasePage />} />
+
 
             <Route path="/profile" element={<PrivateRoutes />}>
                 <Route path="" element={<ProfilePage />} />

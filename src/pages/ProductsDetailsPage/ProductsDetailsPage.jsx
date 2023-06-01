@@ -74,6 +74,18 @@ const ProductDetailsPage = () => {
 
                             <Col md={{ span: 4 }}>
                                 <img src={product.image} style={{ width: '100%' }} />
+
+                                {
+                                    !product.owner
+                                    &&
+                                    <>
+                                        <Link to={`/products/${_id}/purchase`}>
+                                            <Button variant="warning" size="sm" id={_id}>BUY</Button>
+                                        </Link>
+
+                                    </>
+                                }
+
                             </Col>
 
                         </Row>

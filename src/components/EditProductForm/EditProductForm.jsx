@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import productService from "../../services/products.services"
@@ -19,6 +19,19 @@ const EditProductForm = ({ closeModal, updateList }) => {
     const [loadingImage, setLoadingImage] = useState(false)
 
     const { _id } = useParams()
+
+    useEffect(() => {
+        loadProduct()
+    }, [])
+    const loadProduct = () => {
+
+        productService
+            .getOneProduct(_id)
+            .then(({ data }) => {
+                setProductData(data)
+            })
+            .catch(err => console.log(err))
+    }
 
     const handleInputChange = event => {
         const { name, value } = event.target

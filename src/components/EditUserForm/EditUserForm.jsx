@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import userService from "../../services/user.services"
 import uploadServices from "../../services/upload.services"
@@ -16,6 +16,19 @@ const EditUserForm = ({ closeModal, updateList }) => {
 
     const { _id } = useParams()
 
+    useEffect(() => {
+        loadUser()
+    }, [])
+
+    const loadUser = () => {
+
+        userService
+            .getOneUser(_id)
+            .then(({ data }) => {
+                setUserData(data)
+            })
+            .catch(err => console.log(err))
+    }
 
     const handleInputChange = event => {
         const { name, value } = event.target
