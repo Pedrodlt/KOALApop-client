@@ -6,7 +6,7 @@ import ProductsListPage from "../pages/ProductsListPage/ProductsListPage"
 import ProductDetailsPage from '../pages/ProductsDetailsPage/ProductsDetailsPage'
 import UsersListPage from '../pages/UsersListPage/UsersListPage'
 import UserDetailsPage from '../pages/UserDetailsPage/UserDetailsPage'
-import ProfilePage from '../pages/ProfilePage/ProfilePage'
+// import ProfilePage from '../pages/ProfilePage/ProfilePage'
 import PrivateRoutes from './PrivateRoutes'
 import PurchasePage from '../pages/PurchasePage/PurchasePage'
 
@@ -25,9 +25,9 @@ const AppRoutes = () => {
             <Route path="/products/:product_id/purchase" element={<PurchasePage />} />
 
 
-            <Route path="/profile" element={<PrivateRoutes />}>
-                <Route path="" element={<ProfilePage />} />
-            </Route>
+            {/* <Route path="/users/:id" element={<PrivateRoutes />}>
+                <Route path="" element={<UserDetailsPage />} />
+            </Route> */}
 
             <Route path="*" element={<h1>404</h1>} />
         </Routes>
