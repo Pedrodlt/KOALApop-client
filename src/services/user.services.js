@@ -33,6 +33,10 @@ class UserService {
         return this.api.put(`/editUser/${user_id}`, userData)
     }
 
+    buyProduct(user_id, product_id) {
+        return this.api.put(`/${product_id}/purchase`, product_id)
+    }
+
     deleteUser(user_id) {
         return this.api.delete(`/deleteUser/${user_id}`)
     }

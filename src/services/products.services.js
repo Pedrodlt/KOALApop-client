@@ -37,6 +37,20 @@ class ProductService {
         return this.api.put(`/editProduct/${product_id}`, productData)
     }
 
+    // buyProduct(product_id, buyerInfo, user_id) {
+    //     console.log('rayotas desdel clienttttttttttttttt', buyerInfo)
+    //     return this.api.put(`/buyProduct/${product_id}`, buyerInfo)
+
+    // }
+    buyProduct(product_id, fullName, email, address, user_id) {
+        const promises = [
+            this.api.put(`/buyProduct/${product_id}`, { fullName, email, address }),
+            this.api.put(`/buyProduct/${product_id}`, { user_id })
+        ];
+
+        return Promise.all(promises);
+    }
+
     deleteProduct(product_id) {
         return this.api.delete(`/deleteProduct/${product_id}`)
     }

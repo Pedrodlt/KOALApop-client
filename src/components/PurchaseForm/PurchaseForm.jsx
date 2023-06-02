@@ -1,13 +1,16 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import productService from "../../services/products.services"
 import uploadServices from "../../services/upload.services"
 import FormError from "../FormError/FormError"
 import { useNavigate, useParams } from "react-router-dom"
+import userService from "../../services/user.services"
+import { AuthContext } from "../../contexts/auth.context"
+
 
 const PurchaseForm = ({ updateList, _id, data }) => {
 
-    const [productData, setProductData] = useState({
+    const [buyerData, setbuyerData] = useState({
         fullName: '',
         email: '',
         address: ''
@@ -17,16 +20,20 @@ const PurchaseForm = ({ updateList, _id, data }) => {
 
     const navigate = useNavigate()
 
+    const { user } = useContext(AuthContext)
+
     const handleInputChange = event => {
         const { name, value } = event.target
-        setProductData({ ...productData, [name]: value })
+        setbuyerData({ ...buyerData, [name]: value })
     }
 
     const handleSubmit = event => {
         event.preventDefault()
 
+        const { fullName, email, address } = buyerData;
+
         productService
-            .editProduct(data._id, { buyerInfo: productData })
+            .buyProduct(data._id, fullName, email, address, user.id)
             .then((response) => {
                 console.log(response)
                 navigate('/')
@@ -34,6 +41,19 @@ const PurchaseForm = ({ updateList, _id, data }) => {
             .catch(err => {
                 setErrors(err.response.data.errorMessages)
             })
+
+
+        // productService
+        //     .editProduct(data._id, { buyerInfo: buyerData })
+        //     .then((response) => {
+        //         console.log(response)
+        //         navigate('/')
+        //     })
+        //     .catch(err => {
+        //         setErrors(err.response.data.errorMessages)
+        //     })
+
+
     }
 
     return (
