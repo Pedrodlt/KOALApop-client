@@ -1,4 +1,5 @@
 import { Button, Card, Modal } from "react-bootstrap"
+import { Carousel } from "react-bootstrap"
 
 import './ProductCard.css'
 import { Link } from "react-router-dom"
@@ -32,7 +33,23 @@ const ProductCard = ({ title, image, _id, /* owner */ }) => {
     return (
         <>
             <Card className="mb-3 ProductCard">
-                <Card.Img variant="top" src={image} />
+                <Carousel>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src={image}
+                            alt="First slide"
+                        />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src={image}
+                            alt="Second slide"
+                        />
+                    </Carousel.Item>
+                </Carousel>
+                {/* <Card.Img variant="top" src={image} /> */}
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
                     <div className="d-grid">

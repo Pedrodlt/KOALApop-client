@@ -5,6 +5,8 @@ import { Row, Col, Container, Button, Modal } from "react-bootstrap"
 import EditUserForm from "../../components/EditUserForm/EditUserForm"
 import Loader from "../../components/Loader/Loader"
 import { AuthContext } from "../../contexts/auth.context"
+import './UserDetailsPage.css';
+
 
 const UserDetailsPage = () => {
 
@@ -50,7 +52,7 @@ const UserDetailsPage = () => {
                     <Loader />
                     :
                     <>
-                        <h1>Detalles de {profileUser.username}</h1>
+                        <h1>User Profile: {profileUser.username}!</h1>
                         <hr />
 
                         <Row>
@@ -72,10 +74,11 @@ const UserDetailsPage = () => {
                                         <Button variant="warning" size="sm" onClick={() => handleDelete()}>DELETE</Button>
                                     </>
                                 }
+
                             </Col>
 
                             <Col md={{ span: 4 }}>
-                                <img src={profileUser.avatar} style={{ width: '100%' }} />
+                                <img src={profileUser.avatar} style={{ width: '100%', borderRadius: '50%', marginLeft: '200px' }} />
                             </Col>
 
                         </Row>

@@ -1,14 +1,14 @@
 import { useState, useEffect, useContext } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import productService from "../../services/products.services"
-import uploadServices from "../../services/upload.services"
+// import uploadServices from "../../services/upload.services"
 import FormError from "../FormError/FormError"
 import { useNavigate, useParams } from "react-router-dom"
-import userService from "../../services/user.services"
+// import userService from "../../services/user.services"
 import { AuthContext } from "../../contexts/auth.context"
 
 
-const PurchaseForm = ({ updateList, _id, data }) => {
+const PurchaseForm = ({ /* updateList, _id, */ data }) => {
 
     const [buyerData, setbuyerData] = useState({
         fullName: '',
@@ -42,7 +42,6 @@ const PurchaseForm = ({ updateList, _id, data }) => {
                 setErrors(err.response.data.errorMessages)
             })
 
-
         // productService
         //     .editProduct(data._id, { buyerInfo: buyerData })
         //     .then((response) => {
@@ -52,8 +51,6 @@ const PurchaseForm = ({ updateList, _id, data }) => {
         //     .catch(err => {
         //         setErrors(err.response.data.errorMessages)
         //     })
-
-
     }
 
     return (

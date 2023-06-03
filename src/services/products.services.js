@@ -43,12 +43,14 @@ class ProductService {
 
     // }
     buyProduct(product_id, fullName, email, address, user_id) {
-        const promises = [
-            this.api.put(`/buyProduct/${product_id}`, { fullName, email, address }),
-            this.api.put(`/buyProduct/${product_id}`, { user_id })
-        ];
+        // const promises = [
+        //     this.api.put(`/buyProduct/${product_id}`, { fullName, email, address }),
+        //     this.api.put(`/buyProduct/${product_id}`, { user_id })
+        // ];
 
-        return Promise.all(promises);
+        // return Promise.all(promises);
+
+        return this.api.put(`/buyProduct/${product_id}`, { fullName, email, address, user_id })
     }
 
     deleteProduct(product_id) {

@@ -6,7 +6,6 @@ import ProductsListPage from "../pages/ProductsListPage/ProductsListPage"
 import ProductDetailsPage from '../pages/ProductsDetailsPage/ProductsDetailsPage'
 import UsersListPage from '../pages/UsersListPage/UsersListPage'
 import UserDetailsPage from '../pages/UserDetailsPage/UserDetailsPage'
-// import ProfilePage from '../pages/ProfilePage/ProfilePage'
 import PrivateRoutes from './PrivateRoutes'
 import PurchasePage from '../pages/PurchasePage/PurchasePage'
 
@@ -21,13 +20,12 @@ const AppRoutes = () => {
             <Route path="/products/list" element={<ProductsListPage />} />
             <Route path="/products/:_id" element={<ProductDetailsPage />} />
             <Route path="/users/list" element={<UsersListPage />} />
-            <Route path="/users/:_id" element={<UserDetailsPage />} />
             <Route path="/products/:product_id/purchase" element={<PurchasePage />} />
 
 
-            {/* <Route path="/users/:id" element={<PrivateRoutes />}>
+            <Route path="/users/:_id" element={<PrivateRoutes />}>
                 <Route path="" element={<UserDetailsPage />} />
-            </Route> */}
+            </Route>
 
             <Route path="*" element={<h1>404</h1>} />
         </Routes>
