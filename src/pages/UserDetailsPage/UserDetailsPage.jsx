@@ -91,7 +91,7 @@ const UserDetailsPage = () => {
                             </Col>
 
                             <Col md={{ span: 4 }}>
-                                <img src={profileUser.avatar} style={{ width: '100%', borderRadius: '50%', marginLeft: '200px' }} />
+                                <img src={profileUser.avatar} style={{ width: '100%', borderRadius: '40%', marginLeft: '200px' }} />
                             </Col>
 
                         </Row>
