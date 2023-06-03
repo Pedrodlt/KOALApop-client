@@ -61,6 +61,19 @@ const UserDetailsPage = () => {
                                 <h3>Especificaciones</h3>
                                 <p>{profileUser.email}</p>
                                 <hr />
+                                {
+                                    profileUser?.purchasedProduct.map((eachPurchasedProduct) => {
+
+                                        return (
+
+                                            <>
+                                                <h4>Purchased Products</h4>
+                                                <p>{eachPurchasedProduct.title}</p>
+                                            </>
+                                        )
+                                    })
+                                }
+                                <hr />
 
                                 <Link to="/users/list">
                                     <Button variant="dark">BACK</Button>

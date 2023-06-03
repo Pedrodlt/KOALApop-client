@@ -14,6 +14,7 @@ const ProductCard = ({ title, image, _id, /* owner */ }) => {
     // const [showModal, setShowModal] = useState(false)
 
     const [products, setProducts] = useState()
+    console.log(products)
 
 
     useEffect(() => {
@@ -33,7 +34,28 @@ const ProductCard = ({ title, image, _id, /* owner */ }) => {
     return (
         <>
             <Card className="mb-3 ProductCard">
-                <Carousel>
+
+                {/* <Carousel>
+                    {image.map((img, index) => (
+                        <Carousel.Item key={index}>
+                            <img className="d-block w-100" src={img} alt="" />
+                        </Carousel.Item>
+                    ))} */}
+                {/* {
+                        products?.map((p) => {
+                            return (
+                                <Carousel.Item key={p.id}>
+                                    <img
+                                        className="d-block w-100"
+                                        src={p.image}
+                                        alt=""
+                                    />
+                                </Carousel.Item>
+                            )
+                        })
+                    } */}
+                {/* </Carousel> */}
+                {/* <Carousel>
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
@@ -47,9 +69,9 @@ const ProductCard = ({ title, image, _id, /* owner */ }) => {
                             src={image}
                             alt="Second slide"
                         />
-                    </Carousel.Item>
-                </Carousel>
-                {/* <Card.Img variant="top" src={image} /> */}
+                    </Carousel.Item> */}
+                {/* </Carousel> */}
+                <Card.Img variant="top" src={image} />
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
                     <div className="d-grid">
@@ -61,7 +83,7 @@ const ProductCard = ({ title, image, _id, /* owner */ }) => {
                         } */}
                     </div>
                 </Card.Body>
-            </Card>
+            </Card >
 
             {/* <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Header closeButton>
