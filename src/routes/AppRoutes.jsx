@@ -8,7 +8,7 @@ import UsersListPage from '../pages/UsersListPage/UsersListPage'
 import UserDetailsPage from '../pages/UserDetailsPage/UserDetailsPage'
 import PrivateRoutes from './PrivateRoutes'
 import PurchasePage from '../pages/PurchasePage/PurchasePage'
-import PurchaseForm from '../components/PurchaseForm/PurchaseForm'
+
 
 const AppRoutes = () => {
 

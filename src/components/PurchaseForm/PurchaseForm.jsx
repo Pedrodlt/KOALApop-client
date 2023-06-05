@@ -35,10 +35,11 @@ const PurchaseForm = ({ /* updateList, _id, */ data }) => {
         productService
             .buyProduct(data._id, fullName, email, address, user.id)
             .then((response) => {
-                // console.log(response)
-                navigate('/products/list')
+                console.log('GERMAN DICE QUE AQUI NO ENTRE', response)
+                navigate('/')
             })
             .catch(err => {
+                console.log('mal mal')
                 setErrors(err.response.data.errorMessages)
             })
 
