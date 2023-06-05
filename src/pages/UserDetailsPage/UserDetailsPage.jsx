@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { useParams, Link, useNavigate } from "react-router-dom"
 import userService from "../../services/user.services"
-import { Row, Col, Container, Button, Modal } from "react-bootstrap"
+import { Row, Col, Container, Button, Modal, Card } from "react-bootstrap"
 import EditUserForm from "../../components/EditUserForm/EditUserForm"
 import Loader from "../../components/Loader/Loader"
 import { AuthContext } from "../../contexts/auth.context"
@@ -57,22 +57,48 @@ const UserDetailsPage = () => {
 
                         <Row>
 
-                            <Col md={{ span: 6 }}>
-                                <h3>Especificaciones</h3>
+                            <Col md={{ span: 8 }}>
+                                {/* <h3>Especificaciones</h3> */}
                                 <p>{profileUser.email}</p>
+                                <p>{profileUser.funds}€ | {/* {
+
+                                    user?._id === owner && <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>Add Funds</Button>
+                                } */}
+                                </p>
                                 <hr />
-                                {
-                                    profileUser?.purchasedProduct.map((eachPurchasedProduct) => {
+                                <h4>Purchased Products</h4>
+                                <Row>
+                                    {
+                                        profileUser?.purchasedProduct.map((eachPurchasedProduct) => {
 
-                                        return (
+                                            return (
 
-                                            <>
-                                                <h4>Purchased Products</h4>
-                                                <p>{eachPurchasedProduct.title}</p>
-                                            </>
-                                        )
-                                    })
-                                }
+                                                <>
+                                                    <Col md={{ span: 3 }}>
+                                                        <Card className="mb-3 PurchasedProductCard">
+                                                            {/* </Carousel> */}
+                                                            <Card.Img variant="top" src={eachPurchasedProduct.image} />
+                                                            <Card.Body>
+                                                                <Card.Title>{eachPurchasedProduct.title}</Card.Title>
+                                                                <div className="d-grid">
+                                                                    <Link to={`/products/${_id}`} className="btn btn-dark btn-sm">
+                                                                        {/* <Button variant="dark" size="sm"> */}Details{/* </Button> */}
+                                                                    </Link>
+                                                                    {/* {
+                            user?._id === owner && <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
+                        } */}
+                                                                </div>
+                                                            </Card.Body>
+                                                        </Card >
+
+
+                                                        <p>{eachPurchasedProduct.title}</p>
+                                                    </Col>
+                                                </>
+                                            )
+                                        })
+                                    }
+                                </Row>
                                 <hr />
 
                                 <Link to="/users/list">
@@ -91,7 +117,7 @@ const UserDetailsPage = () => {
                             </Col>
 
                             <Col md={{ span: 4 }}>
-                                <img src={profileUser.avatar} style={{ width: '100%', borderRadius: '40%', marginLeft: '200px' }} />
+                                <img src={profileUser.avatar} style={{ width: '100%', borderRadius: '40%' }} />
                             </Col>
 
                         </Row>

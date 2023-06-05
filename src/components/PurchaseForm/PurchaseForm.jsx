@@ -35,8 +35,8 @@ const PurchaseForm = ({ /* updateList, _id, */ data }) => {
         productService
             .buyProduct(data._id, fullName, email, address, user.id)
             .then((response) => {
-                console.log(response)
-                navigate('/')
+                // console.log(response)
+                navigate('/products/list')
             })
             .catch(err => {
                 setErrors(err.response.data.errorMessages)
