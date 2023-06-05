@@ -1,4 +1,14 @@
 .ProductCard img {
     height: 300px;
-    object-fit: fill;
+    object-fit: cover;
+}
+
+.ownerInCard img {
+    width: 55%;
+    height: 95%;
+    border-radius: 50%;
+}
+
+.usernameInCard {
+    margin-top: 20%;
 }

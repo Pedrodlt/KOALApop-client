@@ -47,14 +47,15 @@ const ProductDetailsPage = () => {
                     <Loader />
                     :
                     <>
-                        <h1>Detalles de {product.title}</h1>
+                        <h1>{product.title} Details</h1>
                         <hr />
 
                         <Row>
 
                             <Col md={{ span: 6 }}>
-                                <h3>Especificaciones</h3>
+                                <h4>{product.category}</h4>
                                 <p>{product.description}</p>
+                                <p>{product.price} €</p>
                                 <hr />
 
                                 <Link to="/products/list">

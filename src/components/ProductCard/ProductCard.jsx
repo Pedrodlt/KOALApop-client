@@ -1,4 +1,4 @@
-import { Button, Card, Modal } from "react-bootstrap"
+import { Button, Card, Modal, Row, Col } from "react-bootstrap"
 import { Carousel } from "react-bootstrap"
 
 import './ProductCard.css'
@@ -6,16 +6,18 @@ import { Link } from "react-router-dom"
 import { /* useContext, */ useState, useEffect } from "react"
 // import { AuthContext } from './../../contexts/auth.context'
 import productService from "../../services/products.services"
+import Loader from "../Loader/Loader"
 // import EditProductForm from '../EditProductForm/EditProductForm'
 
 
-const ProductCard = ({ title, image, _id, /* owner */ }) => {
+const ProductCard = ({ title, image, price, description, _id, owner }) => {
 
     // const [showModal, setShowModal] = useState(false)
 
-    const [products, setProducts] = useState()
-    console.log(products)
+    const [products, setProducts] = useState([])
 
+    console.log('LOS PRODUCTOS', products)
+    console.log('EL OWNER', owner)
 
     useEffect(() => {
         loadProducts()
@@ -33,57 +35,43 @@ const ProductCard = ({ title, image, _id, /* owner */ }) => {
 
     return (
         <>
-            <Card className="mb-3 ProductCard">
+            {
+                products && products.length > 0 ? (
+                    <Card className="mb-3 ProductCard">
+                        <Row className="ownerInCard">
+                            <Col md={{ span: 6 }}>
+                                <img src={owner?.avatar} alt="" />
+                            </Col>
+                            <Col md={{ span: 6 }}><p className="usernameInCard">{owner?.username}</p></Col>
+                        </Row>
 
-                <Carousel>
-                    {image?.map((img, index) => (
-                        <Carousel.Item key={index}>
-                            <img className="d-block w-100" src={img} alt="" />
-                        </Carousel.Item>
-                    ))}
-                    {/* {
-                        products?.map((p) => {
-                            return (
-                                <Carousel.Item key={p._id}>
-                                    <img
-                                        className="d-block w-100"
-                                        src={image}
-                                        alt=""
-                                    />
+                        <Carousel>
+                            {image?.map((img, index) => (
+                                <Carousel.Item key={index}>
+                                    <img className="d-block w-100" src={img} alt="" />
                                 </Carousel.Item>
-                            )
-                        })
-                    }*/}
-                </Carousel>
-                {/* <Carousel>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            src={image}
-                            alt="First slide"
-                        />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            src={image}
-                            alt="Second slide"
-                        />
-                    </Carousel.Item> */}
-                {/* </Carousel> */}
-                {/* <Card.Img variant="top" src={image} /> */}
-                <Card.Body>
-                    <Card.Title>{title}</Card.Title>
-                    <div className="d-grid">
-                        <Link to={`/products/${_id}`} className="btn btn-dark btn-sm">
-                            {/* <Button variant="dark" size="sm"> */}Details{/* </Button> */}
-                        </Link>
-                        {/* {
-                            user?._id === owner && <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
-                        } */}
-                    </div>
-                </Card.Body>
-            </Card >
+                            ))}
+
+                        </Carousel>
+                        <Card.Body>
+
+                            <Card.Title>
+                                <h5>{title}</h5>
+                                <p style={{ fontWeight: 300 }}>{price} €</p>
+                                <hr />
+                            </Card.Title>
+                            <p style={{ fontWeight: 100 }}>{description}</p>
+                            <div className="d-grid">
+                                <Link to={`/products/${_id}`} className="btn btn-dark btn-sm"> Details </Link>
+                            </div>
+
+                        </Card.Body>
+                    </Card >
+                )
+                    :
+                    <Loader />
+
+            }
 
             {/* <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Header closeButton>

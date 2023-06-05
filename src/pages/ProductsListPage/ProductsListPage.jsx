@@ -10,6 +10,7 @@ import { AuthContext } from "../../contexts/auth.context"
 const ProductsListPage = ({ closeModal, updateList }) => {
 
     const [products, setProducts] = useState()
+    console.log('1231231231231231', products)
     const [showModal, setShowModal] = useState(false)
     const { user } = useContext(AuthContext)
 
@@ -22,6 +23,7 @@ const ProductsListPage = ({ closeModal, updateList }) => {
             .getAllProducts()
             .then(({ data }) => {
                 setProducts(data)
+                console.log('-----------------------------------', data)
                 updateList()
                 closeModal()
             })
