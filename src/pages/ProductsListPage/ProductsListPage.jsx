@@ -1,18 +1,23 @@
 import { useContext, useEffect, useState } from "react"
-import { Container, Row, Modal, Button } from "react-bootstrap"
+import { Container, Row, Modal, Button, Col } from "react-bootstrap"
 import productService from "../../services/products.services"
 import ProductsList from "../../components/ProductsList/ProductsList"
 import NewProductForm from "../../components/NewProductForm/NewProductForm"
 // import EditProductForm from "../../components/EditProductForm/EditProductForm"
 import Loader from "../../components/Loader/Loader"
 import { AuthContext } from "../../contexts/auth.context"
+import SearchBar from "../../components/SearchBar/SearchBar"
 
 const ProductsListPage = ({ closeModal, updateList }) => {
 
     const [products, setProducts] = useState()
-    console.log('1231231231231231', products)
     const [showModal, setShowModal] = useState(false)
     const { user } = useContext(AuthContext)
+
+    const [productsList, setProductsList] = useState(products);
+    const [productBackup, setProductBackup] = useState(products)
+    const [showFilterProduct, setShowFilterProduct] = useState()
+
 
     useEffect(() => {
         loadProducts()
@@ -23,21 +28,39 @@ const ProductsListPage = ({ closeModal, updateList }) => {
             .getAllProducts()
             .then(({ data }) => {
                 setProducts(data)
-                console.log('-----------------------------------', data)
+                setProductsList(data)
                 updateList()
                 closeModal()
             })
             .catch(err => console.log(err))
     }
 
+    useEffect(() => {
+        let filterProduct = products?.filter(elm => {
+            return elm.title.toLowerCase().includes(showFilterProduct) || elm.category.toLowerCase().includes(showFilterProduct) || elm.price.toString().includes(showFilterProduct)
+
+        })
+        console.log("Resultaadoooo Filtro", filterProduct)
+        setProductsList(filterProduct)
+
+    }, [showFilterProduct])
+
+
     return (
         <Container>
+            <Row>
+                <Col>
+                    <h1>PRODUCTS LIST</h1>
 
-            <h1>PRODUCTS LIST</h1>
+                    {
+                        user && <Button variant="dark" size="sm" onClick={() => setShowModal(true)}>Sell Product</Button>
+                    }
+                </Col>
+                <Col className="mt-5">
+                    <SearchBar setShowFilterProduct={setShowFilterProduct} />
+                </Col>
+            </Row>
 
-            {
-                user && <Button variant="dark" size="sm" onClick={() => setShowModal(true)}>Sell Product</Button>
-            }
 
             <hr />
             <Row>
@@ -47,7 +70,7 @@ const ProductsListPage = ({ closeModal, updateList }) => {
                         // <h1>CHARGING.....</h1>
                         <Loader />
                         :
-                        <ProductsList products={products} />//ESTE ES EL COMPONENTE PENDIENTE
+                        <ProductsList productsList={productsList} />//ESTE ES EL COMPONENTE PENDIENTE
                 }
             </Row>
 
