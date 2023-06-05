@@ -6,8 +6,6 @@ import Loader from "../../components/Loader/Loader"
 import ProductsList from "../../components/ProductsList/ProductsList"
 import { useEffect, useState } from "react"
 
-
-
 const HomePage = () => {
 
     const [products, setProducts] = useState()
