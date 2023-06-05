@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from "react"
 import { useParams, Link, useNavigate } from "react-router-dom"
 import productService from "../../services/products.services"
-import { Row, Col, Container, Button, Modal } from "react-bootstrap"
+import { Row, Col, Container, Button, Modal, Carousel } from "react-bootstrap"
 import { AuthContext } from './../../contexts/auth.context'
 import EditProductForm from '../EditProductPage/EditProductPage'
 import Loader from "../../components/Loader/Loader"
+
 
 
 const ProductDetailsPage = () => {
@@ -73,7 +74,15 @@ const ProductDetailsPage = () => {
                             </Col>
 
                             <Col md={{ span: 4 }}>
-                                <img src={product.image} style={{ width: '100%' }} />
+                                {/* <img src={product.image} style={{ width: '100%' }} /> */}
+
+                                <Carousel>
+                                    {product.image?.map((img, index) => (
+                                        <Carousel.Item key={index}>
+                                            <img className="d-block w-100" src={img} alt="" />
+                                        </Carousel.Item>
+                                    ))}
+                                </Carousel>
 
                                 {
                                     user._id !== product.owner

@@ -35,13 +35,13 @@ const ProductCard = ({ title, image, _id, /* owner */ }) => {
         <>
             <Card className="mb-3 ProductCard">
 
-                {/* <Carousel> */}
-                {/* {image?.map((img, index) => (
+                <Carousel>
+                    {image?.map((img, index) => (
                         <Carousel.Item key={index}>
                             <img className="d-block w-100" src={img} alt="" />
                         </Carousel.Item>
-                    ))} */}
-                {/* {
+                    ))}
+                    {/* {
                         products?.map((p) => {
                             return (
                                 <Carousel.Item key={p._id}>
@@ -53,8 +53,8 @@ const ProductCard = ({ title, image, _id, /* owner */ }) => {
                                 </Carousel.Item>
                             )
                         })
-                    }
-                </Carousel> */}
+                    }*/}
+                </Carousel>
                 {/* <Carousel>
                     <Carousel.Item>
                         <img
@@ -71,7 +71,7 @@ const ProductCard = ({ title, image, _id, /* owner */ }) => {
                         />
                     </Carousel.Item> */}
                 {/* </Carousel> */}
-                <Card.Img variant="top" src={image} />
+                {/* <Card.Img variant="top" src={image} /> */}
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
                     <div className="d-grid">

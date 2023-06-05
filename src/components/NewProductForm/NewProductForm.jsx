@@ -13,11 +13,12 @@ const NewProductForm = ({ closeModal, updateList }) => {
         description: '',
         category: '',
         price: '',
-        image: ''
+        image: []
     })
 
     const [loadingImage, setLoadingImage] = useState(false)
     const [errors, setErrors] = useState([])
+
 
 
     const handleInputChange = event => {
@@ -41,40 +42,42 @@ const NewProductForm = ({ closeModal, updateList }) => {
 
     const { title, description, category, price } = productData
 
-    const handleFileUpload = e => {
-
-        // setLoadingImage(true)
-
-        // const formData = new FormData()
-        // for (let i = 0; i < e.target.files.length; i++) {
-        //     formData.append('imageData', e.target.files[i])
-        // }
-
-        // uploadServices
-        //     .uploadimage(formData)
-        //     .then(res => {
-        //         setProductData({ ...productData, image: [...productData.image, ...res.data.cloudinary_urls] })
-        //         setLoadingImage(false)
-        //     })
-        //     .catch(err => {
-        //         setLoadingImage(false)
-        //     })
-
+    const handleFilesUpload = e => {
 
         setLoadingImage(true)
 
         const formData = new FormData()
-        formData.append('imageData', e.target.files[0])
+
+        for (let i = 0; i < e.target.files.length; i++) {
+            formData.append('imagesData', e.target.files[i])
+        }
 
         uploadServices
-            .uploadimage(formData)
+            .uploadimages(formData)
             .then(res => {
-                setProductData({ ...productData, image: res.data.cloudinary_url })
+                setProductData({ ...productData, image: res.data.cloudinary_urls })
+                console.log('aqui a currar')
                 setLoadingImage(false)
             })
             .catch(err => {
                 setLoadingImage(false)
             })
+
+
+        // setLoadingImage(true)
+
+        // const formData = new FormData()
+        // formData.append('imageData', e.target.files[0])
+
+        // uploadServices
+        //     .uploadimage(formData)
+        //     .then(res => {
+        //         setProductData({ ...productData, image: res.data.cloudinary_url })
+        //         setLoadingImage(false)
+        //     })
+        //     .catch(err => {
+        //         setLoadingImage(false)
+        //     })
     }
 
     return (
@@ -107,9 +110,9 @@ const NewProductForm = ({ closeModal, updateList }) => {
 
             </Row>
 
-            <Form.Group className="mb-3" controlId="image">
+            <Form.Group className="mb-3" controlId="images">
                 <Form.Label>Image</Form.Label>
-                <Form.Control type="file" onChange={handleFileUpload} multiple />{/* multiples archivos */}
+                <Form.Control type="file" onChange={handleFilesUpload} multiple />{/* multiples archivos */}
             </Form.Group>
 
             {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
