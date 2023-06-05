@@ -37,7 +37,7 @@ const ProductCard = ({ title, image, price, description, _id, owner }) => {
         <>
             {
                 products && products.length > 0 ? (
-                    <Card className="mb-3 ProductCard">
+                    <Card className=" ProductCard">
                         <Row className="ownerInCard">
                             <Col md={{ span: 6 }}>
                                 <img src={owner?.avatar} alt="" />
@@ -54,13 +54,16 @@ const ProductCard = ({ title, image, price, description, _id, owner }) => {
 
                         </Carousel>
                         <Card.Body>
+                            <div >
+                                <Card.Title>
+                                    <h5>{title}</h5>
+                                    <p style={{ fontWeight: 300 }}>{price} €</p>
+                                    <hr />
+                                </Card.Title>
+                                <p style={{ fontWeight: 100 }}>{description}</p>
 
-                            <Card.Title>
-                                <h5>{title}</h5>
-                                <p style={{ fontWeight: 300 }}>{price} €</p>
-                                <hr />
-                            </Card.Title>
-                            <p style={{ fontWeight: 100 }}>{description}</p>
+
+                            </div>
                             <div className="d-grid">
                                 <Link to={`/products/${_id}`} className="btn btn-dark btn-sm"> Details </Link>
                             </div>

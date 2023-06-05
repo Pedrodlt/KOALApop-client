@@ -1,6 +1,7 @@
 .ProductCard img {
     height: 300px;
     object-fit: cover;
+
 }
 
 .ownerInCard img {
@@ -11,4 +12,18 @@
 
 .usernameInCard {
     margin-top: 20%;
+}
+
+.ProductCard {
+    color: black;
+
+
+}
+
+.card-body {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+
+
 }
