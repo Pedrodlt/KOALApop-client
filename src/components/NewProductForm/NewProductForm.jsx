@@ -13,7 +13,7 @@ const NewProductForm = ({ closeModal, updateList }) => {
         description: '',
         category: '',
         price: '',
-        image: ''/* [] */
+        image: ''
     })
 
     const [loadingImage, setLoadingImage] = useState(false)
@@ -42,31 +42,24 @@ const NewProductForm = ({ closeModal, updateList }) => {
     const { title, description, category, price } = productData
 
     const handleFileUpload = e => {
-        // setLoadingImage(true);
 
-        // const files = e.target.files;
-        // const uploadedImages = [];
+        // setLoadingImage(true)
 
-        // for (let i = 0; i < files.length; i++) {
-        //     const file = files[i];
-        //     const formData = new FormData();
-        //     formData.append("imageData", file);
-
-        //     uploadServices
-        //         .uploadimage(formData)
-        //         .then((res) => {
-        //             uploadedImages.push(res.data.cloudinary_url);
-
-        //             // Verificar si se han subido todas las imágenes
-        //             if (uploadedImages.length === files.length) {
-        //                 setProductData({ ...productData, images: uploadedImages });
-        //                 setLoadingImage(false);
-        //             }
-        //         })
-        //         .catch((err) => {
-        //             setLoadingImage(false);
-        //         });
+        // const formData = new FormData()
+        // for (let i = 0; i < e.target.files.length; i++) {
+        //     formData.append('imageData', e.target.files[i])
         // }
+
+        // uploadServices
+        //     .uploadimage(formData)
+        //     .then(res => {
+        //         setProductData({ ...productData, image: [...productData.image, ...res.data.cloudinary_urls] })
+        //         setLoadingImage(false)
+        //     })
+        //     .catch(err => {
+        //         setLoadingImage(false)
+        //     })
+
 
         setLoadingImage(true)
 
@@ -116,7 +109,7 @@ const NewProductForm = ({ closeModal, updateList }) => {
 
             <Form.Group className="mb-3" controlId="image">
                 <Form.Label>Image</Form.Label>
-                <Form.Control type="file" onChange={handleFileUpload} multiple />
+                <Form.Control type="file" onChange={handleFileUpload} multiple />{/* multiples archivos */}
             </Form.Group>
 
             {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}

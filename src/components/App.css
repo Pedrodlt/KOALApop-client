@@ -1,11 +1,15 @@
 .App {
   font-family: 'Montserrat', sans-serif;
   font-weight: 900;
+  background-color: rgb(235, 230, 230);
+  height: 120vh;
 }
 
 h1,
 h2,
+h3,
 h5 {
+  margin-top: 40px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 900;
 }

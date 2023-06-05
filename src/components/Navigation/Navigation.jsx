@@ -34,7 +34,7 @@ const Navigation = () => {
         navigate('/')
     }
     return (
-        <Navbar expand="lg" bg={variant} variant={variant} className='mb-5'>
+        <Navbar expand="lg" bg={variant} variant={variant} >
             <Container>
                 <Navbar.Brand href="/" style={{ color: 'white' }}>_KOALApop</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
