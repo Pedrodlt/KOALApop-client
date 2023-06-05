@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from 'react'
-import { Navbar, Container, Nav } from 'react-bootstrap'
+import { Navbar, Container, Nav, Image } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { ThemeContext } from '../../contexts/theme.context'
 import { AuthContext } from '../../contexts/auth.context'
 import './Navigation.css'
 import userService from '../../services/user.services'
+
 
 const Navigation = () => {
 
@@ -34,9 +35,10 @@ const Navigation = () => {
         navigate('/')
     }
     return (
-        <Navbar expand="lg" bg={variant} variant={variant} >
+        <Navbar expand="lg" bg="white" variant="light" /* bg={variant} variant={variant} */ >
             <Container>
-                <Navbar.Brand href="/" style={{ color: 'white' }}>_KOALApop</Navbar.Brand>
+                <Image className='logoKoala' src="/koala-pop-logo.png" />
+                <Navbar.Brand href="/" style={{ color: 'black' }}>_KOALApop</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     {

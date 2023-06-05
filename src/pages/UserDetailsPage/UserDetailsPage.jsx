@@ -45,93 +45,97 @@ const UserDetailsPage = () => {
 
     return (
         <Container>
-            {
-                !profileUser
-                    ?
-                    // <h1>CHARGING.....</h1>
-                    <Loader />
-                    :
-                    <>
-                        <h1>User Profile: {profileUser.username}!</h1>
-                        <hr />
+            <div className="profileCard">
 
-                        <Row>
 
-                            <Col md={{ span: 8 }}>
-                                {/* <h3>Especificaciones</h3> */}
-                                <p>{profileUser.email}</p>
-                                <p>{profileUser.funds}€ | {/* {
+                {
+                    !profileUser
+                        ?
+                        // <h1>CHARGING.....</h1>
+                        <Loader />
+                        :
+                        <>
+                            <h1 className="profileTitle">User Profile: {profileUser.username}!</h1>
+                            <hr />
+
+                            <Row>
+
+                                <Col md={{ span: 8 }}>
+                                    {/* <h3>Especificaciones</h3> */}
+                                    <p>{profileUser.email}</p>
+                                    <p>{profileUser.funds}€ | {/* {
 
                                     user?._id === owner && <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>Add Funds</Button>
                                 } */}
-                                </p>
-                                <hr />
-                                <h4>Purchased Products</h4>
-                                <Row>
-                                    {
-                                        profileUser?.purchasedProduct.map((eachPurchasedProduct) => {
+                                    </p>
+                                    <hr />
+                                    <h4>Purchased Products</h4>
+                                    <Row>
+                                        {
+                                            profileUser?.purchasedProduct.map((eachPurchasedProduct) => {
 
-                                            return (
+                                                return (
 
-                                                <>
-                                                    <Col md={{ span: 3 }}>
-                                                        <Card className="mb-3 PurchasedProductCard">
-                                                            {/* </Carousel> */}
-                                                            <Card.Img variant="top" src={eachPurchasedProduct.image} />
-                                                            <Card.Body>
-                                                                <Card.Title>{eachPurchasedProduct.title}</Card.Title>
-                                                                <div className="d-grid">
-                                                                    <Link to={`/products/${_id}`} className="btn btn-dark btn-sm">
-                                                                        {/* <Button variant="dark" size="sm"> */}Details{/* </Button> */}
-                                                                    </Link>
-                                                                    {/* {
+                                                    <>
+                                                        <Col md={{ span: 3 }}>
+                                                            <Card className="mb-3 PurchasedProductCard">
+                                                                {/* </Carousel> */}
+                                                                <Card.Img variant="top" src={eachPurchasedProduct.image} />
+                                                                <Card.Body>
+                                                                    <Card.Title>{eachPurchasedProduct.title}</Card.Title>
+                                                                    <div className="d-grid">
+                                                                        <Link to={`/products/${_id}`} className="btn btn-dark btn-sm">
+                                                                            {/* <Button variant="dark" size="sm"> */}Details{/* </Button> */}
+                                                                        </Link>
+                                                                        {/* {
                             user?._id === owner && <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
                         } */}
-                                                                </div>
-                                                            </Card.Body>
-                                                        </Card >
+                                                                    </div>
+                                                                </Card.Body>
+                                                            </Card >
 
 
-                                                        <p>{eachPurchasedProduct.title}</p>
-                                                    </Col>
-                                                </>
-                                            )
-                                        })
+                                                            <p>{eachPurchasedProduct.title}</p>
+                                                        </Col>
+                                                    </>
+                                                )
+                                            })
+                                        }
+                                    </Row>
+                                    <hr />
+
+                                    <Link to="/users/list">
+                                        <Button variant="dark">BACK</Button>
+                                    </Link>
+
+                                    {
+                                        user?._id === _id
+                                        &&
+                                        <>
+                                            <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
+                                            <Button variant="warning" size="sm" onClick={() => handleDelete()}>DELETE</Button>
+                                        </>
                                     }
-                                </Row>
-                                <hr />
 
-                                <Link to="/users/list">
-                                    <Button variant="dark">BACK</Button>
-                                </Link>
+                                </Col>
 
-                                {
-                                    user?._id === _id
-                                    &&
-                                    <>
-                                        <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
-                                        <Button variant="warning" size="sm" onClick={() => handleDelete()}>DELETE</Button>
-                                    </>
-                                }
+                                <Col md={{ span: 4 }}>
+                                    <img src={profileUser.avatar} style={{ width: '100%', borderRadius: '40%' }} />
+                                </Col>
 
-                            </Col>
+                            </Row>
 
-                            <Col md={{ span: 4 }}>
-                                <img src={profileUser.avatar} style={{ width: '100%', borderRadius: '40%' }} />
-                            </Col>
-
-                        </Row>
-
-                        <Modal show={showModal} onHide={() => setShowModal(false)}>
-                            <Modal.Header closeButton>
-                                <Modal.Title>Edit User</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <EditUserForm closeModal={() => setShowModal(false)} updateList={loadUser} />
-                            </Modal.Body>
-                        </Modal>
-                    </>
-            }
+                            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Edit User</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <EditUserForm closeModal={() => setShowModal(false)} updateList={loadUser} />
+                                </Modal.Body>
+                            </Modal>
+                        </>
+                }
+            </div>
 
         </Container>
     )

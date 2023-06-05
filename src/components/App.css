@@ -2,8 +2,8 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 900;
   background-color: rgb(28, 35, 83);
-  color: rgb(0, 0, 0);
-  height: 120vh;
+  color: white;
+  height: 130vh;
 }
 
 h1,
@@ -12,6 +12,5 @@ h3,
 h5 {
   margin-top: 40px;
   font-family: 'Montserrat', sans-serif;
-
   font-weight: 900;
 }
