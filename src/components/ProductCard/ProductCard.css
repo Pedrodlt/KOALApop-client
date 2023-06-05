@@ -1,6 +1,7 @@
 .ProductCard img {
     height: 300px;
     object-fit: cover;
+
 }
 
 .ownerInCard img {
@@ -14,5 +15,15 @@
 }
 
 .ProductCard {
-    color: black
+    color: black;
+
+
+}
+
+.card-body {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+
+
 }

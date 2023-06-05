@@ -5,6 +5,7 @@ import { Row, Col, Container, Button, Modal, Carousel } from "react-bootstrap"
 import { AuthContext } from './../../contexts/auth.context'
 import EditProductForm from '../EditProductPage/EditProductPage'
 import Loader from "../../components/Loader/Loader"
+import './ProductsDetailsPage.css';
 
 
 
@@ -40,77 +41,79 @@ const ProductDetailsPage = () => {
 
     return (
         <Container>
-            {
-                !product
-                    ?
-                    // <h1>CHARGING.....</h1>
-                    <Loader />
-                    :
-                    <>
-                        <h1>{product.title} Details</h1>
-                        <hr />
+            <div className="detailsCard">
+                {
+                    !product
+                        ?
+                        // <h1>CHARGING.....</h1>
+                        <Loader />
+                        :
+                        <>
+                            <h1 className="profileTitle">{product.title} Details</h1>
+                            <hr />
 
-                        <Row>
+                            <Row>
 
-                            <Col md={{ span: 6 }}>
-                                <h4>{product.category}</h4>
-                                <p>{product.description}</p>
-                                <p>{product.price} €</p>
-                                <hr />
+                                <Col md={{ span: 6 }}>
+                                    <h4>{product.category}</h4>
+                                    <p>{product.description}</p>
+                                    <p>{product.price} €</p>
+                                    <hr />
 
-                                <Link to="/products/list">
-                                    <Button variant="dark">Volver a la galería</Button>
-                                </Link>
+                                    <Link to="/products/list">
+                                        <Button variant="dark">Volver a la galería</Button>
+                                    </Link>
 
 
-                                {
-                                    user?._id === product.owner
-                                    &&
-                                    <>
-                                        <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
-                                        <Button variant="alert" size="sm" onClick={() => handleDelete()}>DELETE</Button>
-                                    </>
-                                }
-
-                            </Col>
-
-                            <Col md={{ span: 4 }}>
-                                {/* <img src={product.image} style={{ width: '100%' }} /> */}
-
-                                <Carousel>
-                                    {product.image?.map((img, index) => (
-                                        <Carousel.Item key={index}>
-                                            <img className="d-block w-100" src={img} alt="" />
-                                        </Carousel.Item>
-                                    ))}
-                                </Carousel>
-
-                                {
-                                    user._id !== product.owner
-                                        ?
+                                    {
+                                        user?._id === product.owner
+                                        &&
                                         <>
-                                            <Link to={`/products/${_id}/purchase`}>
-                                                <Button variant="warning" size="sm" id={_id}>BUY</Button>
-                                            </Link>
+                                            <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
+                                            <Button variant="alert" size="sm" onClick={() => handleDelete()}>DELETE</Button>
                                         </>
-                                        :
-                                        <p>Your Product</p>
-                                }
+                                    }
 
-                            </Col>
+                                </Col>
 
-                        </Row>
+                                <Col md={{ span: 4 }}>
+                                    {/* <img src={product.image} style={{ width: '100%' }} /> */}
 
-                        <Modal show={showModal} onHide={() => setShowModal(false)}>
-                            <Modal.Header closeButton>
-                                <Modal.Title>Edit Product</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <EditProductForm closeModal={() => setShowModal(false)} updateList={loadProduct} />
-                            </Modal.Body>
-                        </Modal>
-                    </>
-            }
+                                    <Carousel>
+                                        {product.image?.map((img, index) => (
+                                            <Carousel.Item key={index}>
+                                                <img className="d-block w-100" src={img} alt="" />
+                                            </Carousel.Item>
+                                        ))}
+                                    </Carousel>
+
+                                    {
+                                        user._id !== product.owner
+                                            ?
+                                            <>
+                                                <Link to={`/products/${_id}/purchase`}>
+                                                    <Button variant="warning" size="sm" id={_id}>BUY</Button>
+                                                </Link>
+                                            </>
+                                            :
+                                            <p>Your Product</p>
+                                    }
+
+                                </Col>
+
+                            </Row>
+
+                            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Edit Product</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <EditProductForm closeModal={() => setShowModal(false)} updateList={loadProduct} />
+                                </Modal.Body>
+                            </Modal>
+                        </>
+                }
+            </div>
 
         </Container>
     )

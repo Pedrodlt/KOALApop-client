@@ -1,0 +1,13 @@
+.detailsCard {
+    background-color: white;
+    /* padding-bottom: 5%;
+    padding-right: 5%;
+    padding-left: 5%; */
+    padding: 0% 5% 5% 5%;
+    border-radius: 5%;
+    color: black
+}
+
+.profileTitle {
+    padding-top: 5%
+}
