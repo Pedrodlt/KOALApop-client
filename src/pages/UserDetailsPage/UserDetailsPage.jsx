@@ -91,11 +91,11 @@ const UserDetailsPage = () => {
                             user?._id === owner && <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
                         } */}
                                                                     </div>
+                                                                    {/* <p>{eachPurchasedProduct.title}</p> */}
                                                                 </Card.Body>
                                                             </Card >
 
 
-                                                            <p>{eachPurchasedProduct.title}</p>
                                                         </Col>
                                                     </>
                                                 )
