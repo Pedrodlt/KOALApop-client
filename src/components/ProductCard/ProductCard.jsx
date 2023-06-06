@@ -61,7 +61,7 @@ const ProductCard = ({ title, image, price, description, _id, owner }) => {
 
                             </div>
                             <div className="d-grid">
-                                <Link to={`/products/${_id}`} className="btn btn-dark btn-sm"> Details </Link>
+                                <Link to={`/products/${_id}`} className="button"> Details </Link>
                             </div>
 
                         </Card.Body>
