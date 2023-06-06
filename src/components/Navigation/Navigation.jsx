@@ -35,7 +35,7 @@ const Navigation = () => {
         navigate('/')
     }
     return (
-        <Navbar expand="lg" bg="white" variant="light" /* bg={variant} variant={variant} */ >
+        <Navbar className=" shadow-sm p-3 mb-5 bg-white rounded navbarDetails" expand="lg" bg="white" variant="light" /* bg={variant} variant={variant} */ >
             <Container>
                 <Image className='logoKoala' src="/koala-pop-logo.png" />
                 <Navbar.Brand href="/" style={{ color: 'black' }}>_KOALApop</Navbar.Brand>
