@@ -14,8 +14,7 @@ const ProductsListPage = ({ closeModal, updateList }) => {
     const [showModal, setShowModal] = useState(false)
     const { user } = useContext(AuthContext)
 
-    const [productsList, setProductsList] = useState(products);
-    const [productBackup, setProductBackup] = useState(products)
+    const [productsList, setProductsList] = useState(products)
     const [showFilterProduct, setShowFilterProduct] = useState()
 
 
@@ -27,8 +26,9 @@ const ProductsListPage = ({ closeModal, updateList }) => {
         productService
             .getAllProducts()
             .then(({ data }) => {
-                setProducts(data)
-                setProductsList(data)
+                const availableProducts = data.filter(elm => !elm.bought)
+                setProducts(availableProducts)
+                setProductsList(availableProducts)
                 updateList()
                 closeModal()
             })
@@ -38,11 +38,8 @@ const ProductsListPage = ({ closeModal, updateList }) => {
     useEffect(() => {
         let filterProduct = products?.filter(elm => {
             return elm.title.toLowerCase().includes(showFilterProduct) || elm.category.toLowerCase().includes(showFilterProduct) || elm.price.toString().includes(showFilterProduct)
-
         })
-        console.log("Resultaadoooo Filtro", filterProduct)
         setProductsList(filterProduct)
-
     }, [showFilterProduct])
 
 

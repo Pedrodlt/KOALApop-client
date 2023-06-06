@@ -8,7 +8,7 @@ import { useEffect, useState } from "react"
 
 const HomePage = () => {
 
-    const [products, setProducts] = useState()
+    const [productsList, setProductsList] = useState()
 
     useEffect(() => {
         loadProducts()
@@ -18,9 +18,8 @@ const HomePage = () => {
         productService
             .getAllProducts()
             .then(({ data }) => {
-                const firstFourProducts = data.slice(0, 4);
-                setProducts(firstFourProducts);
-
+                const firstFourProducts = data.slice(1, 5);
+                setProductsList(firstFourProducts);
             })
             .catch(err => console.log(err))
     }
@@ -38,9 +37,6 @@ const HomePage = () => {
 
                         <h3 style={{ textAlign: "center" }}>POPULAR ARTICLES</h3>
                         <hr />
-                        {/* <Link to="/products/list">
-                            <Button variant="dark">Ir a la galería</Button>
-                        </Link> */}
 
                     </Col>
 
@@ -48,11 +44,12 @@ const HomePage = () => {
 
                 <Row>
                     {
-                        !products
+                        !productsList
                             ?
                             <Loader />
                             :
-                            <ProductsList products={products} />
+                            <ProductsList productsList={productsList} />
+
                     }
 
                 </Row>

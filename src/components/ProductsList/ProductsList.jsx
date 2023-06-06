@@ -6,7 +6,6 @@ import { useState } from "react"
 
 const ProductsList = ({ productsList }) => {
 
-
     return (
 
         productsList?.map(elm => {
