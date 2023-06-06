@@ -35,17 +35,17 @@ const Navigation = () => {
         navigate('/')
     }
     return (
-        <Navbar className=" shadow-sm p-3 mb-5 bg-white rounded navbarDetails" expand="lg" bg="white" variant="light" /* bg={variant} variant={variant} */ >
+        <Navbar className=" shadow-sm p-3 mb-3 bg-white rounded navbarDetails" expand="lg" bg="white" variant="light" /* bg={variant} variant={variant} */ >
             <Container>
                 <Image className='logoKoala' src="/koala-pop-logo.png" />
-                <Navbar.Brand href="/" style={{ color: 'black' }}>_KOALApop</Navbar.Brand>
+                <Navbar.Brand href="/" style={{ color: 'rgb(16, 203, 236)' }}>_KOALApop</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     {
                         user
                             ?
                             <>
-                                <Nav className="me-auto">
+                                <Nav className="me-auto ">
                                     <Nav.Link as="span">
                                         <Link to="/products/list" className='navTitle'>Shop</Link>
                                     </Nav.Link>
@@ -59,7 +59,7 @@ const Navigation = () => {
                                 <Nav.Link as="span">
                                     <Link to={`/users/${user._id}`} className='navTitle'>¡Heleu, {profileUser?.username}!</Link>
                                 </Nav.Link>
-                                <Nav.Link className='navTitle justify-content-right mx-2' style={{ color: 'white' }} as="span" onClick={handleLogout}>Logout</Nav.Link>
+                                <Nav.Link className='navTitle justify-content-right mx-2' style={{ color: 'rgb(16, 203, 236)' }} as="span" onClick={handleLogout}>Logout</Nav.Link>
                             </>
                             :
                             <>
@@ -67,7 +67,7 @@ const Navigation = () => {
                                     <Link to="/register" className='navTitle'>Sign Up</Link>
                                 </Nav.Link>
                                 <Nav.Link as="span">
-                                    <Link to="/login" className='navTitle mx-2'>Login</Link>
+                                    <Link to="/login" className='navTitle mx-2 '>Login</Link>
                                 </Nav.Link>
                             </>
                     }
