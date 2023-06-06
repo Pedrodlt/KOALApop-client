@@ -1,23 +1,28 @@
 .App {
   font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  color: white;
+  color: rgb(104, 103, 103);
 }
 
 body {
-  background-color: rgb(28, 35, 83);
+  background-color: rgb(239, 235, 235);
+  /* background-color: rgb(28, 35, 83); */
   padding-bottom: 5em;
 }
 
 h1,
 h2,
 h3,
-h5 {
+h4,
+h5,
+p {
   margin-top: 40px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 900;
+  color: rgb(104, 103, 103);
 }
 
 .card {
   height: 100%;
+  border: none;
 }
