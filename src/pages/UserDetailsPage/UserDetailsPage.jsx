@@ -69,7 +69,7 @@ const UserDetailsPage = () => {
                                 } */}
                                     </p>
                                     <hr />
-                                    <h4>Purchased Products</h4>
+                                    <h5>Purchased Products</h5>
                                     <Row>
                                         {
                                             profileUser?.purchasedProduct.map((eachPurchasedProduct) => {

@@ -8,7 +8,8 @@ import { useEffect, useState } from "react"
 
 const HomePage = () => {
 
-    const [products, setProducts] = useState()
+    // const [products, setProducts] = useState()
+    const [productsList, setProductsList] = useState();
 
     useEffect(() => {
         loadProducts()
@@ -19,7 +20,7 @@ const HomePage = () => {
             .getAllProducts()
             .then(({ data }) => {
                 const firstFourProducts = data.slice(0, 4);
-                setProducts(firstFourProducts);
+                setProductsList(firstFourProducts);
 
             })
             .catch(err => console.log(err))
@@ -48,11 +49,11 @@ const HomePage = () => {
 
                 <Row>
                     {
-                        !products
+                        !productsList
                             ?
                             <Loader />
                             :
-                            <ProductsList products={products} />
+                            <ProductsList productsList={productsList} />
                     }
 
                 </Row>

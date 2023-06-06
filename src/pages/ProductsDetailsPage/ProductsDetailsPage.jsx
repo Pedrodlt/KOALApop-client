@@ -54,8 +54,8 @@ const ProductDetailsPage = () => {
 
                             <Row>
 
-                                <Col md={{ span: 6 }}>
-                                    <h4>{product.category}</h4>
+                                <Col md={{ span: 8 }}>
+                                    <h5>{product.category}</h5>
                                     <p>{product.description}</p>
                                     <p>{product.price} €</p>
                                     <hr />
@@ -92,7 +92,7 @@ const ProductDetailsPage = () => {
                                             ?
                                             <>
                                                 <Link to={`/products/${_id}/purchase`}>
-                                                    <Button variant="warning" size="sm" id={_id}>BUY</Button>
+                                                    <Button className="buttonBuy" variant="warning" size="sm" id={_id}>BUY</Button>
                                                 </Link>
                                             </>
                                             :

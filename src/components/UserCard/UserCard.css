@@ -1,4 +1,18 @@
 .UserCard img {
-    height: 120px;
+    height: 15em;
     object-fit: cover;
+    transform: scale(1);
+    transition: all .5s ease;
+}
+
+.UserCard img:hover {
+    transform: scale(1.1);
+}
+
+h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900 !important;
+    text-align: center;
+    padding-top: .4em;
+
 }

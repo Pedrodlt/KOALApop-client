@@ -62,7 +62,6 @@ const ProductCard = ({ title, image, price, description, _id, owner }) => {
                                 </Card.Title>
                                 <p style={{ fontWeight: 100 }}>{description}</p>
 
-
                             </div>
                             <div className="d-grid">
                                 <Link to={`/products/${_id}`} className="btn btn-dark btn-sm"> Details </Link>
