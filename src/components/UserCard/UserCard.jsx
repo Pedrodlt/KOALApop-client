@@ -6,12 +6,15 @@ const UserCard = ({ username, avatar, email, _id }) => {
 
     return (
         <Card className="mb-3 UserCard">
-            <Card.Img variant="top" src={avatar} />
+            <div className="d-grid">
+                <Link to={`/users/${_id}`} className="btn btn-dark btn-sm">
+                    <Card.Img variant="top" src={avatar} />
+                </Link>
+            </div>
+
             <Card.Body>
-                <Card.Title>{username}</Card.Title>
-                <div className="d-grid">
-                    <Link to={`/users/${_id}`} className="btn btn-dark btn-sm">Details</Link>
-                </div>
+                <Card.Title className="userTitle" style={{ color: "black" }}><h4>{username}</h4></Card.Title>
+
             </Card.Body>
         </Card>
     )

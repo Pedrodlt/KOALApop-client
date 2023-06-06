@@ -49,7 +49,6 @@ const HomePage = () => {
                             <Loader />
                             :
                             <ProductsList productsList={productsList} />
-
                     }
 
                 </Row>
