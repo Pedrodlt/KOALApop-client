@@ -1,13 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import { useParams, Link, useNavigate } from "react-router-dom"
 import productService from "../../services/products.services"
-import { Row, Col, Container, Button, Modal, Carousel } from "react-bootstrap"
+import { Row, Col, Container, Button, Modal, Carousel, Card } from "react-bootstrap"
 import { AuthContext } from './../../contexts/auth.context'
 import EditProductForm from '../EditProductPage/EditProductPage'
 import Loader from "../../components/Loader/Loader"
 import './ProductsDetailsPage.css';
-
-
+import BidForm from "../../components/BidForm/BidForm"
 
 const ProductDetailsPage = () => {
 
@@ -37,24 +36,36 @@ const ProductDetailsPage = () => {
             .then(() => navigate('/products/list'))
             .catch(err => console.log(err))
     }
-
-
+    console.log('-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-..-.-.-.-.-.-.-.-.-.-', user?._id, '----->productowner', product?.owner)
     return (
         <Container>
             <div className="detailsCard">
                 {
                     !product
                         ?
-                        // <h1>CHARGING.....</h1>
                         <Loader />
                         :
                         <>
                             <h1 className="profileTitle">{product.title} Details</h1>
+
+                            {
+
+                                user?._id !== product?.owner._id
+                                    ?
+                                    <>
+                                        <Link to={`/products/${_id}/purchase`}>
+                                            <Button className="buttonBuy" variant="warning" size="sm" id={_id}>BUY NOW</Button>
+                                        </Link>
+                                    </>
+                                    :
+                                    <p>Your Product</p>
+                            }
                             <hr />
+
 
                             <Row>
 
-                                <Col md={{ span: 8 }}>
+                                <Col md={{ span: 4 }}>
                                     <h5>{product.category}</h5>
                                     <p>{product.description}</p>
                                     <p>{product.price} €</p>
@@ -66,7 +77,7 @@ const ProductDetailsPage = () => {
 
 
                                     {
-                                        user?._id === product.owner
+                                        user?._id === product?.owner._id
                                         &&
                                         <>
                                             <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
@@ -87,19 +98,45 @@ const ProductDetailsPage = () => {
                                         ))}
                                     </Carousel>
 
-                                    {
-                                        user._id !== product.owner
-                                            ?
-                                            <>
-                                                <Link to={`/products/${_id}/purchase`}>
-                                                    <Button className="buttonBuy" variant="warning" size="sm" id={_id}>BUY</Button>
-                                                </Link>
-                                            </>
-                                            :
-                                            <p>Your Product</p>
-                                    }
+                                    <div>
+                                        <h5>Auction House</h5>
+                                        {
+                                            product?.bids?.map(bid => {
+                                                return (
+                                                    <>
+
+                                                        <Card className="bidCard">
+                                                            <p> <img src={bid.owner.avatar} alt="" />{bid.content} €</p>
+
+                                                            {
+                                                                user?._id === product?.owner._id
+                                                                &&
+                                                                <>
+                                                                    <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>ACCEPT</Button>
+                                                                    <Button variant="alert" size="sm" onClick={() => handleDelete()}>DENY</Button>
+                                                                </>
+                                                            }
+
+                                                        </Card>
+                                                    </>
+                                                )
+                                            })
+                                        }
+                                    </div>
+
 
                                 </Col>
+                                {
+                                    user?._id !== product?.owner._id
+                                        ?
+                                        <Col md={{ span: 4 }}>
+                                            <BidForm />
+                                        </Col>
+                                        :
+                                        <Col md={{ span: 4 }}>
+                                            YOUR PRODUCT
+                                        </Col>
+                                }
 
                             </Row>
 

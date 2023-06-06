@@ -55,7 +55,6 @@ const PurchaseForm = ({ /* updateList, _id, */ data }) => {
                     navigate('/products/list');
                     emitMessage('💳¡ Payment Succeded !💳')
                 }, 5000);
-                // navigate('/products/list')
             })
             .catch(err => {
                 setErrors(err.response.data.errorMessages)
@@ -170,27 +169,6 @@ const PurchaseForm = ({ /* updateList, _id, */ data }) => {
                     onChange={(e) => setCvv(e.target.value)}
                 />
             </Form.Group>
-
-            {/* <Form.Group className="mb-3" controlId="cardNum">
-                <Form.Label>Card Number💳</Form.Label>
-                <Form.Control type="text" onChange={handleInputChange} name="cardNum" />
-            </Form.Group>
-            <Row>
-
-                <Col>
-                    <Form.Group className="mb-3" controlId="month">
-                        <Form.Label>Expiration Month</Form.Label>
-                        <Form.Control type="date" onChange={handleInputChange} name="month" />
-                    </Form.Group>
-                </Col>
-                <Col>
-                    <Form.Group className="mb-3" controlId="cvv">
-                        <Form.Label>CVV</Form.Label>
-                        <Form.Control type="text" onChange={handleInputChange} name="cvv" />
-                    </Form.Group>
-                </Col>
-
-            </Row> */}
 
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>@Email</Form.Label>

@@ -16,9 +16,6 @@ const ProductCard = ({ title, image, price, description, _id, owner }) => {
 
     const [products, setProducts] = useState([])
 
-    console.log('LOS PRODUCTOS', products)
-    console.log('EL OWNER', owner)
-
     useEffect(() => {
         loadProducts()
     }, [])

@@ -15,3 +15,12 @@
 .buttonBuy {
     margin-top: 2em;
 }
+
+.bidCard {
+    border: 2px solid black;
+}
+
+.bidCard img {
+    border-radius: 50%;
+    width: 15%;
+}
