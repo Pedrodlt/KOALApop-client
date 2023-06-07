@@ -1,5 +1,5 @@
 import { Form, Button, Row } from "react-bootstrap"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context'
@@ -8,15 +8,13 @@ import { ToastContext } from '../../contexts/toast.context'
 import bidService from "../../services/bid.services"
 
 
-const BidForm = ({ /* updateBids */ }) => {
+const BidForm = ({ updateBids }) => {
 
     const { emitMessage } = useContext(ToastContext)
 
     const { user } = useContext(AuthContext)
-    console.log('IMPRIMIENDO USERRRRRRRRRRRRRRRRRRRRRRRRRRRRRR', user)
 
     const { _id } = useParams()
-    console.log(_id)
 
     const [bidData, setBidData] = useState({
         content: '',
@@ -40,8 +38,8 @@ const BidForm = ({ /* updateBids */ }) => {
                 bidService
                     .auctionProduct(_id, data._id)
                     .then(({ data }) => {
-                        // updateComments()
-                        emitMessage("Created comment!")
+                        updateBids()
+                        emitMessage("Bid Placed, Good Luck")
                         setBidData({
                             content: '',
                             owner: user._id

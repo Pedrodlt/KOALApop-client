@@ -6,6 +6,7 @@ import EditUserForm from "../../components/EditUserForm/EditUserForm"
 import Loader from "../../components/Loader/Loader"
 import { AuthContext } from "../../contexts/auth.context"
 import './UserDetailsPage.css';
+import AddFundsForm from "../../components/AddFundsForm/AddFundsForm"
 
 
 const UserDetailsPage = () => {
@@ -17,6 +18,10 @@ const UserDetailsPage = () => {
     const [profileUser, setProfileUser] = useState()
 
     const [showModal, setShowModal] = useState(false)
+    const [showModal2, setShowModal2] = useState(false)
+
+
+
 
     const navigate = useNavigate()
 
@@ -63,10 +68,11 @@ const UserDetailsPage = () => {
                                 <Col md={{ span: 8 }}>
                                     {/* <h3>Especificaciones</h3> */}
                                     <p>{profileUser.email}</p>
-                                    <p>{profileUser.funds}€ | {/* {
-
-                                    user?._id === owner && <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>Add Funds</Button>
-                                } */}
+                                    <p>Wallet : {profileUser.funds}€
+                                        {
+                                            user?._id === profileUser?._id &&
+                                            <Button className="mx-3" variant="warning" size="sm" onClick={() => setShowModal2(true)}>Add Funds</Button>
+                                        }
                                     </p>
                                     <hr />
                                     <h5>Purchased Products</h5>
@@ -124,13 +130,22 @@ const UserDetailsPage = () => {
                                 </Col>
 
                             </Row>
-
+                            {/* EDIT FORM */}
                             <Modal show={showModal} onHide={() => setShowModal(false)}>
                                 <Modal.Header closeButton>
                                     <Modal.Title>Edit User</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
                                     <EditUserForm closeModal={() => setShowModal(false)} updateList={loadUser} />
+                                </Modal.Body>
+                            </Modal>
+                            {/* FUNDS FORM */}
+                            <Modal show={showModal2} onHide={() => setShowModal2(false)}>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Edit User</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <AddFundsForm closeModal={() => setShowModal2(false)} updateList={loadUser} />
                                 </Modal.Body>
                             </Modal>
                         </>
