@@ -90,7 +90,7 @@ const UserDetailsPage = () => {
                                                                 <Card.Body>
                                                                     <Card.Title>{eachPurchasedProduct.title}</Card.Title>
                                                                     <div className="d-grid">
-                                                                        <Link to={`/products/${_id}`} className="btn btn-dark btn-sm">
+                                                                        <Link to={`/products/${eachPurchasedProduct._id}`} className="btn btn-dark btn-sm">
                                                                             {/* <Button variant="dark" size="sm"> */}Details{/* </Button> */}
                                                                         </Link>
                                                                         {/* {
@@ -111,17 +111,19 @@ const UserDetailsPage = () => {
                                     <hr />
 
                                     <Link to="/users/list">
-                                        <Button variant="dark">BACK</Button>
+                                        <Button size="sm" variant="dark">BACK</Button>
                                     </Link>
 
                                     {
                                         user?._id === _id
                                         &&
                                         <>
-                                            <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
+
+                                            <Button className="buttonEdit" variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
                                             <Button variant="warning" size="sm" onClick={() => handleDelete()}>DELETE</Button>
                                         </>
                                     }
+
 
                                 </Col>
 
