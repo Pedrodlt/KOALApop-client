@@ -8,15 +8,13 @@ import { ToastContext } from '../../contexts/toast.context'
 import bidService from "../../services/bid.services"
 
 
-const BidForm = ({ /* updateBids */ }) => {
+const BidForm = ({ updateBids }) => {
 
     const { emitMessage } = useContext(ToastContext)
 
     const { user } = useContext(AuthContext)
-    console.log('IMPRIMIENDO USERRRRRRRRRRRRRRRRRRRRRRRRRRRRRR', user)
 
     const { _id } = useParams()
-    console.log(_id)
 
     const [bidData, setBidData] = useState({
         content: '',
@@ -40,7 +38,7 @@ const BidForm = ({ /* updateBids */ }) => {
                 bidService
                     .auctionProduct(_id, data._id)
                     .then(({ data }) => {
-                        // updateComments()
+                        updateBids()
                         emitMessage("Created comment!")
                         setBidData({
                             content: '',

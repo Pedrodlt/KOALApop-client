@@ -36,7 +36,7 @@ const ProductDetailsPage = () => {
             .then(() => navigate('/products/list'))
             .catch(err => console.log(err))
     }
-    console.log('-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-..-.-.-.-.-.-.-.-.-.-', user?._id, '----->productowner', product?.owner)
+
     return (
         <Container>
             <div className="detailsCard">
@@ -72,7 +72,7 @@ const ProductDetailsPage = () => {
                                     <hr />
 
                                     <Link to="/products/list">
-                                        <Button variant="dark">Volver a la galería</Button>
+                                        <Button variant="dark">Back to Gallery</Button>
                                     </Link>
 
 
@@ -88,7 +88,6 @@ const ProductDetailsPage = () => {
                                 </Col>
 
                                 <Col md={{ span: 4 }}>
-                                    {/* <img src={product.image} style={{ width: '100%' }} /> */}
 
                                     <Carousel>
                                         {product.image?.map((img, index) => (
@@ -98,39 +97,12 @@ const ProductDetailsPage = () => {
                                         ))}
                                     </Carousel>
 
-                                    <div>
-                                        <h5>Auction House</h5>
-                                        {
-                                            product?.bids?.map(bid => {
-                                                return (
-                                                    <>
-
-                                                        <Card className="bidCard">
-                                                            <p> <img src={bid.owner.avatar} alt="" />{bid.content} €</p>
-
-                                                            {
-                                                                user?._id === product?.owner._id
-                                                                &&
-                                                                <>
-                                                                    <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>ACCEPT</Button>
-                                                                    <Button variant="alert" size="sm" onClick={() => handleDelete()}>DENY</Button>
-                                                                </>
-                                                            }
-
-                                                        </Card>
-                                                    </>
-                                                )
-                                            })
-                                        }
-                                    </div>
-
-
                                 </Col>
                                 {
                                     user?._id !== product?.owner._id
                                         ?
                                         <Col md={{ span: 4 }}>
-                                            <BidForm />
+                                            <BidForm updateBids={loadProduct} />
                                         </Col>
                                         :
                                         <Col md={{ span: 4 }}>
@@ -152,7 +124,44 @@ const ProductDetailsPage = () => {
                 }
             </div>
 
-        </Container>
+            <h5 className="textAuction">Auction House</h5>
+            {
+                product?.bids?.map(bid => {
+                    return (
+                        <Container>
+                            <Row>
+                                <Col md={{ span: 4, offset: 4 }}>
+                                    <div className="bidCard">
+                                        <>
+                                            <Card.Body>
+
+                                                <Card >
+
+                                                    <p> <img src={bid?.owner?.avatar} alt="" />{bid.content} €</p>
+
+                                                    {
+                                                        user?._id === product?.owner._id
+                                                        &&
+                                                        <>
+                                                            <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>ACCEPT</Button>
+                                                            <Button variant="alert" size="sm" onClick={() => handleDelete()}>DENY</Button>
+                                                        </>
+                                                    }
+
+                                                </Card>
+                                            </Card.Body>
+
+                                        </>
+                                    </div >
+                                </Col>
+                            </Row>
+                        </Container>
+                    )
+                })
+            }
+
+
+        </Container >
     )
 }
 
