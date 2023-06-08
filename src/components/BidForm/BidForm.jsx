@@ -7,6 +7,7 @@ import { ToastContext } from '../../contexts/toast.context'
 // import commentsService from "../../services/comment.services"
 import bidService from "../../services/bid.services"
 import userService from "../../services/user.services"
+import { BID_DENIED } from "../../consts/user-messages-consts"
 
 
 const BidForm = ({ updateBids }) => {
@@ -45,9 +46,8 @@ const BidForm = ({ updateBids }) => {
     const handleSubmit = event => {
         event.preventDefault()
 
-        user?.funds >= bidData.content
+        user?.funds >= parseInt(bidData?.content)
             ?
-
             userService
                 .checkFunds(bidData, initialFunds)
                 .then(response => {
@@ -71,9 +71,8 @@ const BidForm = ({ updateBids }) => {
                         .catch(err => console.log(err))
                 })
                 .catch(err => console.log(err))
-
             :
-            alert("no tienes dinero")
+            emitMessage(BID_DENIED)
     }
 
     return (

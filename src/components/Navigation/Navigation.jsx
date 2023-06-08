@@ -60,7 +60,7 @@ const Navigation = () => {
                                     <Link to={`/users/${user._id}`} className='navTitle'>¡Heleu, {profileUser?.username}! 💰{profileUser?.funds}€</Link>
 
                                 </Nav.Link>
-                                <Nav.Link className='navTitle justify-content-right mx-2' style={{ color: 'rgb(16, 203, 236)' }} as="span" onClick={handleLogout}>Logout</Nav.Link>
+                                <Nav.Link className='navTitle pointer justify-content-right mx-2' style={{ color: 'rgb(16, 203, 236)' }} as="span" onClick={handleLogout}>Logout</Nav.Link>
                             </>
                             :
                             <>
