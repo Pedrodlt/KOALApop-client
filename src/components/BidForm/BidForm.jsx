@@ -15,18 +15,20 @@ const BidForm = ({ updateBids }) => {
 
     const { user } = useContext(AuthContext)
 
+    const [userFound, setUserFound] = useState()
+
     const { _id } = useParams()
 
-    const [initialFunds, setInitialFunds] = useState()
+    // const [initialFunds, setInitialFunds] = useState()
 
     useEffect(() => {
-        user && getInitialFunds()
-    }, [])
+        getUserLogged()
+    }, [user])
 
-    const getInitialFunds = () => {
+    const getUserLogged = () => {
         userService
-            .getOneUser(user._id)
-            .then(({ data }) => setInitialFunds(data.funds))
+            .getOneUser(user?._id)
+            .then(({ data }) => setUserFound(data))
             .catch(err => console.log(err))
     }
 
@@ -45,11 +47,12 @@ const BidForm = ({ updateBids }) => {
     const handleSubmit = event => {
         event.preventDefault()
 
-        user?.funds >= bidData.content
-            ?
+        console.log(userFound?.funds, bidData.content)
 
+        userFound?.funds >= parseInt(bidData?.content)
+            ?
             userService
-                .checkFunds(bidData, initialFunds)
+                .checkFunds(bidData, userFound?.funds)
                 .then(response => {
                     bidService
                         .saveBid(bidData)
@@ -71,7 +74,6 @@ const BidForm = ({ updateBids }) => {
                         .catch(err => console.log(err))
                 })
                 .catch(err => console.log(err))
-
             :
             alert("no tienes dinero")
     }

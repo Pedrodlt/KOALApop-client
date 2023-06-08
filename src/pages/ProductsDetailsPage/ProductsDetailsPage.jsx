@@ -79,18 +79,7 @@ const ProductDetailsPage = () => {
 
                                 <Col>
 
-                                    {
 
-                                        user?._id !== product?.owner._id
-                                            ?
-                                            <>
-                                                <Link to={`/products/${_id}/purchase`}>
-                                                    <Button className="buttonBuy" variant="warning" size="sm" id={_id}>BUY NOW</Button>
-                                                </Link>
-                                            </>
-                                            :
-                                            <p>Your Product</p>
-                                    }
 
                                 </Col>
 
@@ -104,10 +93,21 @@ const ProductDetailsPage = () => {
 
                             <Row>
 
-                                <Col md={{ span: 4 }}>
+                                <Col md={{ span: 4 }} >
                                     <h5>{product.category}</h5>
                                     <p>{product.description}</p>
-                                    <p>{product.price} €</p>
+                                    <p >{product.price} €  {
+
+                                        user?._id !== product?.owner._id
+                                            ?
+                                            <>
+                                                <Link to={`/products/${_id}/purchase`}>
+                                                    <Button className="buttonBuy mb-4" variant="warning" size="sm" id={_id}>BUY NOW</Button>
+                                                </Link>
+                                            </>
+                                            :
+                                            <p>Your Product</p>
+                                    }</p>
                                     <hr />
 
                                     <Link to="/products/list">
@@ -116,7 +116,7 @@ const ProductDetailsPage = () => {
 
 
                                     {
-                                        user?._id === product?.owner._id
+                                        user?._id === product?.owner._id && !product.bought
                                         &&
                                         <>
                                             <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
@@ -162,8 +162,11 @@ const ProductDetailsPage = () => {
                         </>
                 }
             </div>
-
-            <h5 className="textAuction">Auction House</h5>
+            {
+                !product?.bought
+                &&
+                <h5 className="textAuction">Auction House</h5>
+            }
             {
                 product?.bids?.map(bid => {
                     return (

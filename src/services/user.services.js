@@ -41,8 +41,8 @@ class UserService {
         return this.api.delete(`/deleteUser/${user_id}`)
     }
 
-    checkFunds(bidData, initialFunds) {
-        return this.api.put(`/getOneUserFunds`, { bidData, initialFunds })
+    checkFunds(bidData, userFunds) {
+        return this.api.put(`/getOneUserFunds`, { bidData, userFunds })
     }
 
 
