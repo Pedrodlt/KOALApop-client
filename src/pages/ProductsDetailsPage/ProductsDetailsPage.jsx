@@ -24,7 +24,7 @@ const ProductDetailsPage = () => {
 
     useEffect(() => {
         loadProduct()
-    }, [product])
+    }, [])
 
     const loadProduct = () => {
         productService
@@ -47,27 +47,19 @@ const ProductDetailsPage = () => {
     const handleDenny = (e) => {
         const { bidOwnerId, bidAmount, bidOwnerFunds, bidID } = JSON.parse(e.target.value);
 
-        console.log(bidOwnerId);
-        console.log(bidAmount);
-        console.log(bidOwnerFunds);
-        console.log('-----------', bidID)
-
         const newFunds = parseInt(bidAmount) + bidOwnerFunds
-        console.log(newFunds);
 
         userService
             .editUser(bidOwnerId, { funds: newFunds })
             .then(() => {
-                productService
-                    .denyBid(_id, bidID)
-                    .then(({ data }) => {
-                        console.log(data)
-                        setProduct(data)
-                        // navigate('/products/list')
-                    })
+                return productService.denyBid(_id, bidID)
+            })
+            .then(({ data }) => {
+                setProduct(data)
             })
             .catch(err => console.log(err))
     }
+
 
     return (
         <Container>
@@ -131,14 +123,14 @@ const ProductDetailsPage = () => {
 
                                 </Col>
                                 {
-                                    user?._id !== product?.owner._id
+                                    user?._id !== product?.owner._id && !product.bought
                                         ?
                                         <Col md={{ span: 4 }}>
                                             <BidForm updateBids={loadProduct} />
                                         </Col>
                                         :
                                         <Col md={{ span: 4 }}>
-                                            YOUR PRODUCT
+                                            {/* YOUR PRODUCT */}
                                         </Col>
                                 }
 
@@ -168,18 +160,18 @@ const ProductDetailsPage = () => {
                                             <Card.Body>
 
                                                 <Card >
-                                                    <Row>
+                                                    <Row className="align-items-center">
                                                         <Col >
                                                             <p> <img src={bid.owner?.avatar} alt="" />{bid.content} €</p>
-
-                                                            <p> <img src={bid.owner?.avatar} alt="" />{bid.content} €</p>
+                                                        </Col>
+                                                        <Col >
 
                                                             {
                                                                 user?._id === product?.owner._id
                                                                 &&
                                                                 <>
-                                                                    <Button variant="warning" size="sm" onClick={() => setShowModal3(true)}>ACCEPT</Button>
-                                                                    <Button variant="alert" size="sm" value={JSON.stringify({ bidOwnerId: bid?.owner?._id, bidAmount: bid?.content, bidOwnerFunds: bid?.owner?.funds, bidID: bid?._id })} onClick={handleDenny}>DENY</Button>
+                                                                    <Button variant="transparent" size="sm" onClick={() => setShowModal3(true)}>{/* ACCEPT */}✅</Button>
+                                                                    <Button variant="transparent" size="sm" value={JSON.stringify({ bidOwnerId: bid?.owner?._id, bidAmount: bid?.content, bidOwnerFunds: bid?.owner?.funds, bidID: bid?._id })} onClick={handleDenny}>❌{/* DENY */}</Button>
                                                                     {/* <Button variant="alert" size="sm" value={{ ownerId: bid?.owner?._id, content: bid?.content }} onClick={handleDenny}>DENY</Button> */}
                                                                 </>
                                                             }

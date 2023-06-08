@@ -18,10 +18,8 @@ const UserDetailsPage = () => {
     const [profileUser, setProfileUser] = useState()
 
     const [showModal, setShowModal] = useState(false)
+
     const [showModal2, setShowModal2] = useState(false)
-
-
-
 
     const navigate = useNavigate()
 
@@ -51,12 +49,9 @@ const UserDetailsPage = () => {
     return (
         <Container>
             <div className="profileCard">
-
-
                 {
                     !profileUser
                         ?
-                        // <h1>CHARGING.....</h1>
                         <Loader />
                         :
                         <>
@@ -66,14 +61,14 @@ const UserDetailsPage = () => {
                             <Row>
 
                                 <Col md={{ span: 8 }}>
-                                    {/* <h3>Especificaciones</h3> */}
-                                    <p>{profileUser.email}</p>
-                                    <p>Wallet : {profileUser.funds}€
-                                        {
-                                            user?._id === profileUser?._id &&
+                                    <p>Email: {profileUser.email}</p>
+                                    {
+                                        user?._id === profileUser?._id
+                                        &&
+                                        <p>Wallet : {profileUser.funds}€
                                             <Button className="mx-3" variant="warning" size="sm" onClick={() => setShowModal2(true)}>Add Funds</Button>
-                                        }
-                                    </p>
+                                        </p>
+                                    }
                                     <hr />
                                     <h5>Purchased Products</h5>
                                     <Row>
@@ -85,23 +80,13 @@ const UserDetailsPage = () => {
                                                     <>
                                                         <Col md={{ span: 3 }}>
                                                             <Card className="mb-3 PurchasedProductCard">
-                                                                {/* </Carousel> */}
-                                                                <Card.Img variant="top" src={eachPurchasedProduct.image} />
+                                                                <Link to={`/products/${eachPurchasedProduct._id}`}>
+                                                                    <Card.Img variant="top" src={eachPurchasedProduct.image} />
+                                                                </Link>
                                                                 <Card.Body>
                                                                     <Card.Title>{eachPurchasedProduct.title}</Card.Title>
-                                                                    <div className="d-grid">
-                                                                        <Link to={`/products/${eachPurchasedProduct._id}`} className="btn btn-dark btn-sm">
-                                                                            {/* <Button variant="dark" size="sm"> */}Details{/* </Button> */}
-                                                                        </Link>
-                                                                        {/* {
-                            user?._id === owner && <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
-                        } */}
-                                                                    </div>
-                                                                    {/* <p>{eachPurchasedProduct.title}</p> */}
                                                                 </Card.Body>
                                                             </Card >
-
-
                                                         </Col>
                                                     </>
                                                 )
@@ -123,7 +108,6 @@ const UserDetailsPage = () => {
                                             <Button variant="warning" size="sm" onClick={() => handleDelete()}>DELETE</Button>
                                         </>
                                     }
-
 
                                 </Col>
 

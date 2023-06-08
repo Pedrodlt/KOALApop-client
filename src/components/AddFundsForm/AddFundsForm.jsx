@@ -4,6 +4,8 @@ import userService from "../../services/user.services"
 import uploadServices from "../../services/upload.services"
 import { useParams } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
+import * as PURCHASE_CONSTS from "../../consts/purchase-consts"
+
 
 const AddFundsForm = ({ closeModal, updateList }) => {
 
@@ -108,18 +110,9 @@ const AddFundsForm = ({ closeModal, updateList }) => {
                                 onChange={(e) => setExpirationMonth(e.target.value)}
                             >
                                 <option value="">Mes</option>
-                                <option value="01">Jan</option>
-                                <option value="02">Feb</option>
-                                <option value="03">Mar</option>
-                                <option value="04">Apr</option>
-                                <option value="05">May</option>
-                                <option value="06">Jun</option>
-                                <option value="07">Jul</option>
-                                <option value="08">Aug</option>
-                                <option value="09">Sep</option>
-                                <option value="10">Oct</option>
-                                <option value="11">Nov</option>
-                                <option value="12">Dic</option>
+                                {
+                                    PURCHASE_CONSTS.PURCHASE_MONTHS_ARRAY.map((elm, idx) => <option key={elm} value={idx < 10 ? `0${idx + 1}` : `${idx + 1}`}>{elm}</option>)
+                                }
                             </Form.Control>
                         </div>
                     </Form.Group>
@@ -137,12 +130,9 @@ const AddFundsForm = ({ closeModal, updateList }) => {
                                 onChange={(e) => setExpirationYear(e.target.value)}
                             >
                                 <option value="">Año</option>
-                                <option value="2023">2023</option>
-                                <option value="2024">2024</option>
-                                <option value="2025">2025</option>
-                                <option value="2026">2026</option>
-                                <option value="2027">2027</option>
-                                {/* ... Agregar opciones para los años futuros ... */}
+                                {
+                                    PURCHASE_CONSTS.PURCHASE_YEARS_ARRAY.map((elm) => <option key={elm} value={elm}>{elm}</option>)
+                                }
                             </Form.Control>
                         </div>
 
@@ -158,7 +148,7 @@ const AddFundsForm = ({ closeModal, updateList }) => {
                 </Col>
             </Row>
             <div className="d-grid">
-                <Button variant="dark" type="submit" >Continue</Button>
+                <Button className="mt-2" variant="dark" type="submit" >Continue</Button>
             </div>
         </Form>
     )

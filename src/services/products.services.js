@@ -24,6 +24,9 @@ class ProductService {
     getAllProducts() {
         return this.api.get('/getAllProducts')
     }
+    getAllProductsSorted() {
+        return this.api.get('/getAllProductsSorted')
+    }
 
     getOneProduct(product_id) {
         return this.api.get(`/getOneProduct/${product_id}`)

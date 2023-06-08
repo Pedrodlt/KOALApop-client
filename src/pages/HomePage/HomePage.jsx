@@ -9,8 +9,9 @@ import { useEffect, useState } from "react"
 const HomePage = () => {
 
     const [productsList, setProductsList] = useState()
+    const [productsList2, setProductsList2] = useState()
 
-
+    // const firstFourProducts2 = productsList.filter(elm => elm.category === 'Clothing')
 
     useEffect(() => {
         loadProducts()

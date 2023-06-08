@@ -8,7 +8,8 @@ import { useNavigate, useParams } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 import Loader from "../Loader/Loader"
 import { ToastContext } from "../../contexts/toast.context"
-import userService from "../../services/user.services"
+import * as PURCHASE_CONSTS from "../../consts/purchase-consts"
+import * as USER_MESSAGES from './../../consts/user-messages-consts'
 
 
 const PurchaseForm = ({ /* updateList, _id, */ data }) => {
@@ -18,7 +19,6 @@ const PurchaseForm = ({ /* updateList, _id, */ data }) => {
         email: '',
         address: ''
     })
-    console.log(data)
 
     const { emitMessage } = useContext(ToastContext)
 
@@ -46,25 +46,17 @@ const PurchaseForm = ({ /* updateList, _id, */ data }) => {
         event.preventDefault()
 
         const { fullName, email, address } = buyerData;
-        const newFunds = data.owner.funds + data.price
 
         productService
             .buyProduct(data._id, fullName, email, address, user.id)
             .then((response) => {
                 setIsLoading(true);
-                emitMessage('💳Proccesing Payment and Shipment Details, Please Wait...💳')
+                emitMessage(USER_MESSAGES.PROCESSING_PAYMENT)
                 setTimeout(() => {
                     setIsLoading(false);
-                    emitMessage('💳¡ Payment Succeded !💳')
-                }, 5000);
-                userService
-                    .editUser(data.owner._id, { funds: newFunds })
-                    .then(() => {
-                        navigate('/products/list');
-                    })
-                    .catch(err => {
-                        console.log(err)
-                    })
+                    navigate('/products/list');
+                    emitMessage(USER_MESSAGES.PAYMENT_SUCCESS)
+                }, PURCHASE_CONSTS.TRANSACTION_DELAY);
             })
             .catch(err => {
                 setErrors(err.response.data.errorMessages)
@@ -130,18 +122,9 @@ const PurchaseForm = ({ /* updateList, _id, */ data }) => {
                                 onChange={(e) => setExpirationMonth(e.target.value)}
                             >
                                 <option value="">Mes</option>
-                                <option value="01">Jan</option>
-                                <option value="02">Feb</option>
-                                <option value="03">Mar</option>
-                                <option value="04">Apr</option>
-                                <option value="05">May</option>
-                                <option value="06">Jun</option>
-                                <option value="07">Jul</option>
-                                <option value="08">Aug</option>
-                                <option value="09">Sep</option>
-                                <option value="10">Oct</option>
-                                <option value="11">Nov</option>
-                                <option value="12">Dic</option>
+                                {
+                                    PURCHASE_CONSTS.PURCHASE_MONTHS_ARRAY.map((elm, idx) => <option key={elm} value={idx < 10 ? `0${idx + 1}` : `${idx + 1}`}>{elm}</option>)
+                                }
                             </Form.Control>
                         </div>
                     </Form.Group>
@@ -159,12 +142,10 @@ const PurchaseForm = ({ /* updateList, _id, */ data }) => {
                                 onChange={(e) => setExpirationYear(e.target.value)}
                             >
                                 <option value="">Año</option>
-                                <option value="2023">2023</option>
-                                <option value="2024">2024</option>
-                                <option value="2025">2025</option>
-                                <option value="2026">2026</option>
-                                <option value="2027">2027</option>
-                                {/* ... Agregar opciones para los años futuros ... */}
+                                {
+                                    PURCHASE_CONSTS.PURCHASE_YEARS_ARRAY.map((elm) => <option key={elm} value={elm}>{elm}</option>)
+                                }
+
                             </Form.Control>
                         </div>
                     </Form.Group>
