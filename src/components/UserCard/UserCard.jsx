@@ -7,7 +7,7 @@ const UserCard = ({ username, avatar, email, _id }) => {
     return (
         <Card className="mb-3 UserCard">
             <div className="d-grid">
-                <Link to={`/users/${_id}`} >
+                <Link to={`/users/${_id}`} className="btn btn-sl">
                     <Card.Img variant="top" src={avatar} />
                 </Link>
             </div>

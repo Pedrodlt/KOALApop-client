@@ -111,7 +111,7 @@ const ProductDetailsPage = () => {
                                     <hr />
 
                                     <Link to="/products/list">
-                                        <Button variant="dark">Back to Gallery</Button>
+                                        <Button variant="dark" size="sm">Back to Gallery</Button>
                                     </Link>
 
 
@@ -119,8 +119,8 @@ const ProductDetailsPage = () => {
                                         user?._id === product?.owner._id && !product.bought
                                         &&
                                         <>
-                                            <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
-                                            <Button variant="alert" size="sm" onClick={() => handleDelete()}>DELETE</Button>
+                                            <Button variant="warning" size="sm" className="mx-2" onClick={() => setShowModal(true)}>EDIT</Button>
+                                            <Button variant="danger" size="sm" onClick={() => handleDelete()}>DELETE</Button>
                                         </>
                                     }
 

@@ -9,10 +9,9 @@
 
 }
 
-.navbarDetails {
+.pointer {
 
-    /* border-bottom: 2px solid rgb(235, 233, 233); */
-
+    cursor: pointer
 }
 
 /* @import url(https://fonts.googleapis.com/css?family=Open+Sans:700);
