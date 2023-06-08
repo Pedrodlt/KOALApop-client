@@ -17,7 +17,14 @@
 .ProductCard {
     color: black;
 
+}
 
+.cardBody {
+    background-color: rgb(239, 235, 235);
+}
+
+.ownerInCard {
+    background-color: rgb(239, 235, 235);
 }
 
 .card-body {
@@ -26,14 +33,13 @@
     justify-content: space-between;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 
 
 .button {
@@ -57,4 +63,4 @@
         0 0 50px #03e9f4,
         0 0 200px #03e9f4;
     -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
-}
+} */

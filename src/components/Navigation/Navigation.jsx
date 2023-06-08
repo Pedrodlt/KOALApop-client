@@ -38,7 +38,7 @@ const Navigation = () => {
         <Navbar className=" shadow-sm p-3 mb-3 bg-white rounded navbarDetails" expand="lg" bg="white" variant="light" /* bg={variant} variant={variant} */ >
             <Container>
                 <Image className='logoKoala' src="/koala-pop-logo.png" />
-                <Navbar.Brand href="/" style={{ color: 'rgb(16, 203, 236)' }} className="text-borde">_KOALApop</Navbar.Brand>
+                <Navbar.Brand href="/" style={{ color: 'rgb(16, 203, 236)' }} >_KOALApop</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     {

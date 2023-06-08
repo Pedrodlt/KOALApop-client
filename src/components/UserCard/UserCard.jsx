@@ -12,8 +12,8 @@ const UserCard = ({ username, avatar, email, _id }) => {
                 </Link>
             </div>
 
-            <Card.Body>
-                <Card.Title className="userTitle" style={{ color: "black" }}><h4>{username}</h4></Card.Title>
+            <Card.Body className="userBody">
+                <Card.Title className="userTitle" /* style={{ color: "black" }} */><h4>{username}</h4></Card.Title>
 
             </Card.Body>
         </Card>

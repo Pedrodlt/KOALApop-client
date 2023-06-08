@@ -136,18 +136,26 @@ const ProductDetailsPage = () => {
                                             <Card.Body>
 
                                                 <Card >
+                                                    <Row>
+                                                        <Col >
+                                                            <p> <img src={bid.owner?.avatar} alt="" />{bid.content} €</p>
 
-                                                    <p> <img src={bid?.owner?.avatar} alt="" />{bid.content} €</p>
+                                                        </Col>
 
-                                                    {
-                                                        user?._id === product?.owner._id
-                                                        &&
-                                                        <>
-                                                            <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>ACCEPT</Button>
-                                                            <Button variant="alert" size="sm" onClick={() => handleDelete()}>DENY</Button>
-                                                        </>
-                                                    }
+                                                        <Col >
 
+                                                            {
+                                                                user?._id === product?.owner._id
+                                                                &&
+                                                                <>
+                                                                    <Button variant="warning" size="sm" onClick={() => setShowModal(true)}>ACCEPT</Button>
+                                                                    <Button variant="alert" size="sm" onClick={() => handleDelete()}>DENY</Button>
+                                                                </>
+                                                            }
+
+
+                                                        </Col>
+                                                    </Row>
                                                 </Card>
                                             </Card.Body>
 

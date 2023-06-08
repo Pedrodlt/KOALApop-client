@@ -36,7 +36,7 @@ const ProductCard = ({ title, image, price, description, _id, owner }) => {
                 products && products.length > 0 ? (
                     <Card className=" ProductCard">
                         <Row className="ownerInCard">
-                            <Col md={{ span: 6 }}>
+                            <Col md={{ span: 5 }}>
                                 <img src={owner?.avatar} alt="" />
                             </Col>
                             <Col md={{ span: 6 }}><p className="usernameInCard">{owner?.username}</p></Col>
@@ -45,12 +45,12 @@ const ProductCard = ({ title, image, price, description, _id, owner }) => {
                         <Carousel>
                             {image?.map((img, index) => (
                                 <Carousel.Item key={index}>
-                                    <img className="d-block w-100" src={img} alt="" />
+                                    <Link to={`/products/${_id}`} className="button"> <img className="d-block w-100" src={img} alt="" /> </Link>
                                 </Carousel.Item>
                             ))}
 
                         </Carousel>
-                        <Card.Body>
+                        <Card.Body className="cardBody">
                             <div >
                                 <Card.Title>
                                     <h5>{title}</h5>
@@ -60,9 +60,9 @@ const ProductCard = ({ title, image, price, description, _id, owner }) => {
                                 <p style={{ fontWeight: 100 }}>{description}</p>
 
                             </div>
-                            <div className="d-grid">
+                            {/* <div className="d-grid">
                                 <Link to={`/products/${_id}`} className="button"> Details </Link>
-                            </div>
+                            </div> */}
 
                         </Card.Body>
                     </Card >

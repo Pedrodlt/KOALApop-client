@@ -10,6 +10,8 @@ const HomePage = () => {
 
     const [productsList, setProductsList] = useState()
 
+
+
     useEffect(() => {
         loadProducts()
     }, [])
@@ -55,9 +57,31 @@ const HomePage = () => {
 
             </Container>
 
+            <Container>
+                <Row>
+                    <Col md={{ span: 6, offset: 3 }}>
+
+                        <h3 style={{ textAlign: "center" }}>POPULAR ARTICLES</h3>
+                        <hr />
+
+                    </Col>
+
+                </Row>
+
+                <Row>
+                    {
+                        !productsList
+                            ?
+                            <Loader />
+                            :
+                            <ProductsList productsList={productsList} />
+                    }
+
+                </Row>
+
+            </Container>
+
         </>
-
-
 
     )
 }
