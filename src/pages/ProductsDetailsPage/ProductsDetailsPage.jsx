@@ -70,20 +70,35 @@ const ProductDetailsPage = () => {
                         <Loader />
                         :
                         <>
-                            <h1 className="profileTitle">{product.title} Details</h1>
+                            <Row className="align-items-center">
 
-                            {
+                                <Col>
+                                    <h1 className="profileTitle">{product.title}</h1>
 
-                                user?._id !== product?.owner._id
-                                    ?
-                                    <>
-                                        <Link to={`/products/${_id}/purchase`}>
-                                            <Button className="buttonBuy" variant="warning" size="sm" id={_id}>BUY NOW</Button>
-                                        </Link>
-                                    </>
-                                    :
-                                    <p>Your Product</p>
-                            }
+                                </Col>
+
+                                <Col>
+
+                                    {
+
+                                        user?._id !== product?.owner._id
+                                            ?
+                                            <>
+                                                <Link to={`/products/${_id}/purchase`}>
+                                                    <Button className="buttonBuy" variant="warning" size="sm" id={_id}>BUY NOW</Button>
+                                                </Link>
+                                            </>
+                                            :
+                                            <p>Your Product</p>
+                                    }
+
+                                </Col>
+
+
+                            </Row>
+
+
+
                             <hr />
 
 
@@ -166,6 +181,10 @@ const ProductDetailsPage = () => {
                                                         </Col>
                                                         <Col >
 
+                                                        </Col >
+                                                        <Col >
+
+
                                                             {
                                                                 user?._id === product?.owner._id
                                                                 &&
@@ -198,7 +217,7 @@ const ProductDetailsPage = () => {
             }
 
 
-        </Container>
+        </Container >
     )
 }
 

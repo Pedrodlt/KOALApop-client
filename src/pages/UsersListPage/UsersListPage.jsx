@@ -26,32 +26,21 @@ const UserListPage = () => {
         <Container>
 
             <h1>USERS LIST</h1>
-
+            {/* 
             {
                 user && <Button variant="dark" size="sm" onClick={() => setShowModal(true)}>Create New User</Button>
-            }
+            } */}
 
             <hr />
             <Row>
                 {
                     !users
                         ?
-                        // <h1>CHARGING.....</h1>
                         <Loader />
                         :
                         <UsersList users={users} />//ESTE ES EL COMPONENTE PENDIENTE
                 }
             </Row>
-
-            {/* <Modal show={showModal} onHide={() => setShowModal(false)}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Nueva montaña rusa</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <NewCoasterForm closeModal={() => setShowModal(false)} updateList={loadCoasters} />
-                </Modal.Body>
-            </Modal> */}
-
 
         </Container>
     )

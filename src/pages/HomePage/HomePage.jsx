@@ -9,7 +9,8 @@ import { useEffect, useState } from "react"
 const HomePage = () => {
 
     const [productsList, setProductsList] = useState()
-    const [productsList2, setProductsList2] = useState()
+    const [productsListClothing, setProductsListClothing] = useState()
+    const [productsListElectronic, setProductsListElectronic] = useState()
 
     // const firstFourProducts2 = productsList.filter(elm => elm.category === 'Clothing')
 
@@ -23,6 +24,10 @@ const HomePage = () => {
             .then(({ data }) => {
                 const firstFourProducts = data.slice(1, 5);
                 setProductsList(firstFourProducts);
+                const filterProductClothing = data.filter(elm => elm.category === 'Clothing')
+                setProductsListClothing(filterProductClothing);
+                const filterProductElectronic = data.filter(elm => elm.category === 'Electronic')
+                setProductsListElectronic(filterProductElectronic);
             })
             .catch(err => console.log(err))
     }
@@ -62,7 +67,7 @@ const HomePage = () => {
                 <Row>
                     <Col md={{ span: 6, offset: 3 }}>
 
-                        <h3 style={{ textAlign: "center" }}>POPULAR ARTICLES</h3>
+                        <h3 style={{ textAlign: "center" }}>CLOTHING</h3>
                         <hr />
 
                     </Col>
@@ -71,11 +76,35 @@ const HomePage = () => {
 
                 <Row>
                     {
-                        !productsList
+                        !productsListClothing
                             ?
                             <Loader />
                             :
-                            <ProductsList productsList={productsList} />
+                            <ProductsList productsList={productsListClothing} />
+                    }
+
+                </Row>
+
+            </Container>
+
+            <Container>
+                <Row>
+                    <Col md={{ span: 6, offset: 3 }}>
+
+                        <h3 style={{ textAlign: "center" }}>ELECTRONIC</h3>
+                        <hr />
+
+                    </Col>
+
+                </Row>
+
+                <Row>
+                    {
+                        !productsListElectronic
+                            ?
+                            <Loader />
+                            :
+                            <ProductsList productsList={productsListElectronic} />
                     }
 
                 </Row>

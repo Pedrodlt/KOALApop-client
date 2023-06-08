@@ -37,8 +37,6 @@ const BidForm = ({ updateBids }) => {
 
     })
 
-
-
     const handleInputChange = event => {
         const { name, value } = event.target
         setBidData({ ...bidData, [name]: value })
@@ -74,18 +72,8 @@ const BidForm = ({ updateBids }) => {
                 })
                 .catch(err => console.log(err))
 
-
-
             :
             alert("no tienes dinero")
-
-
-
-
-
-
-
-
     }
 
     return (
@@ -104,7 +92,6 @@ const BidForm = ({ updateBids }) => {
 
             </Form>
         </Row >
-
 
     )
 }

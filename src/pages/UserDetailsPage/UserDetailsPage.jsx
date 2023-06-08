@@ -62,11 +62,11 @@ const UserDetailsPage = () => {
 
                                 <Col md={{ span: 8 }}>
                                     <p>Email: {profileUser.email}</p>
+
                                     {
-                                        user?._id === profileUser?._id
-                                        &&
-                                        <p>Wallet : {profileUser.funds}€
-                                            <Button className="mx-3" variant="warning" size="sm" onClick={() => setShowModal2(true)}>Add Funds</Button>
+                                        user?._id === profileUser?._id &&
+                                        <p>Wallet💰 : {profileUser.funds}€
+                                            <Button className="mx-3 button" size="sm" onClick={() => setShowModal2(true)}>Add Funds</Button>
                                         </p>
                                     }
                                     <hr />
@@ -78,7 +78,7 @@ const UserDetailsPage = () => {
                                                 return (
 
                                                     <>
-                                                        <Col md={{ span: 3 }}>
+                                                        <Col className="mb-3" md={{ span: 3 }}>
                                                             <Card className="mb-3 PurchasedProductCard">
                                                                 <Link to={`/products/${eachPurchasedProduct._id}`}>
                                                                     <Card.Img variant="top" src={eachPurchasedProduct.image} />

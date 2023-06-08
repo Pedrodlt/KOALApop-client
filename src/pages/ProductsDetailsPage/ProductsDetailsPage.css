@@ -10,7 +10,7 @@
 }
 
 .profileTitle {
-    padding-top: 5%
+    padding-top: 3% !important;
 }
 
 .buttonBuy {
@@ -27,7 +27,7 @@
 .bidCard img {
 
     border-radius: 50%;
-    width: 15%;
+    width: 30%;
     padding: 0% 2% 0% 2%
 }
 
