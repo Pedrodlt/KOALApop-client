@@ -41,6 +41,14 @@ class ProductService {
         return this.api.put(`/buyProduct/${product_id}`, { fullName, email, address, user_id })
     }
 
+    acceptBid(product_id, bought, user_id) {
+        return this.api.put(`/acceptBid/${product_id}`, { bought, user_id })
+    }
+    denyBid(product_id, bidID) {
+        return this.api.put(`/denyBid/${product_id}`, { bidID })
+    }
+
+
     deleteProduct(product_id) {
         return this.api.delete(`/deleteProduct/${product_id}`)
     }

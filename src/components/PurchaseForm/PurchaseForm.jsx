@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 import Loader from "../Loader/Loader"
 import { ToastContext } from "../../contexts/toast.context"
+import userService from "../../services/user.services"
 
 
 const PurchaseForm = ({ /* updateList, _id, */ data }) => {
@@ -17,6 +18,7 @@ const PurchaseForm = ({ /* updateList, _id, */ data }) => {
         email: '',
         address: ''
     })
+    console.log(data)
 
     const { emitMessage } = useContext(ToastContext)
 
@@ -44,6 +46,7 @@ const PurchaseForm = ({ /* updateList, _id, */ data }) => {
         event.preventDefault()
 
         const { fullName, email, address } = buyerData;
+        const newFunds = data.owner.funds + data.price
 
         productService
             .buyProduct(data._id, fullName, email, address, user.id)
@@ -52,9 +55,16 @@ const PurchaseForm = ({ /* updateList, _id, */ data }) => {
                 emitMessage('💳Proccesing Payment and Shipment Details, Please Wait...💳')
                 setTimeout(() => {
                     setIsLoading(false);
-                    navigate('/products/list');
                     emitMessage('💳¡ Payment Succeded !💳')
                 }, 5000);
+                userService
+                    .editUser(data.owner._id, { funds: newFunds })
+                    .then(() => {
+                        navigate('/products/list');
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
             })
             .catch(err => {
                 setErrors(err.response.data.errorMessages)

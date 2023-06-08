@@ -40,6 +40,12 @@ class UserService {
     deleteUser(user_id) {
         return this.api.delete(`/deleteUser/${user_id}`)
     }
+
+    checkFunds(bidData, initialFunds) {
+        return this.api.put(`/getOneUserFunds`, { bidData, initialFunds })
+    }
+
+
 }
 
 const userService = new UserService()

@@ -55,7 +55,7 @@ const AddFundsForm = ({ closeModal, updateList }) => {
         const updatedUserData = {
             ...userData,
             funds: userData.funds + fundsToAdd,
-        };
+        }
 
         userService
             .editUser(_id, updatedUserData)
