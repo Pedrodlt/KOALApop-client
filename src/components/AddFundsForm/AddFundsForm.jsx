@@ -15,8 +15,6 @@ const AddFundsForm = ({ closeModal, updateList }) => {
     });
     const [fundsToAdd, setFundsToAdd] = useState(0);
 
-
-
     const { _id } = useParams()
 
 

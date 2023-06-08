@@ -168,26 +168,31 @@ const ProductDetailsPage = () => {
                                             <Card.Body>
 
                                                 <Card >
+                                                    <Row>
+                                                        <Col >
+                                                            <p> <img src={bid.owner?.avatar} alt="" />{bid.content} €</p>
 
-                                                    <p> <img src={bid.owner?.avatar} alt="" />{bid.content} €</p>
+                                                            <p> <img src={bid.owner?.avatar} alt="" />{bid.content} €</p>
 
-                                                    {
-                                                        user?._id === product?.owner._id
-                                                        &&
-                                                        <>
-                                                            <Button variant="warning" size="sm" onClick={() => setShowModal3(true)}>ACCEPT</Button>
-                                                            <Button variant="alert" size="sm" value={JSON.stringify({ bidOwnerId: bid?.owner?._id, bidAmount: bid?.content, bidOwnerFunds: bid?.owner?.funds, bidID: bid?._id })} onClick={handleDenny}>DENY</Button>
-                                                            {/* <Button variant="alert" size="sm" value={{ ownerId: bid?.owner?._id, content: bid?.content }} onClick={handleDenny}>DENY</Button> */}
-                                                        </>
-                                                    }
-                                                    <Modal show={showModal3} onHide={() => setShowModal3(false)}>
-                                                        <Modal.Header closeButton>
-                                                            <Modal.Title>ACCEPT BID ?</Modal.Title>
-                                                        </Modal.Header>
-                                                        <Modal.Body>
-                                                            <AcceptBidForm closeModal={() => setShowModal3(false)} updateList={loadProduct} productPrice={product?.price} bidContent={bid.content} bidOwner={bid?.owner?._id} bidOwnerFunds={bid?.owner?.funds} />
-                                                        </Modal.Body>
-                                                    </Modal>
+                                                            {
+                                                                user?._id === product?.owner._id
+                                                                &&
+                                                                <>
+                                                                    <Button variant="warning" size="sm" onClick={() => setShowModal3(true)}>ACCEPT</Button>
+                                                                    <Button variant="alert" size="sm" value={JSON.stringify({ bidOwnerId: bid?.owner?._id, bidAmount: bid?.content, bidOwnerFunds: bid?.owner?.funds, bidID: bid?._id })} onClick={handleDenny}>DENY</Button>
+                                                                    {/* <Button variant="alert" size="sm" value={{ ownerId: bid?.owner?._id, content: bid?.content }} onClick={handleDenny}>DENY</Button> */}
+                                                                </>
+                                                            }
+                                                            <Modal show={showModal3} onHide={() => setShowModal3(false)}>
+                                                                <Modal.Header closeButton>
+                                                                    <Modal.Title>ACCEPT BID ?</Modal.Title>
+                                                                </Modal.Header>
+                                                                <Modal.Body>
+                                                                    <AcceptBidForm closeModal={() => setShowModal3(false)} updateList={loadProduct} productPrice={product?.price} bidContent={bid.content} bidOwner={bid?.owner?._id} bidOwnerFunds={bid?.owner?.funds} />
+                                                                </Modal.Body>
+                                                            </Modal>
+                                                        </Col>
+                                                    </Row>
                                                 </Card>
                                             </Card.Body>
 
