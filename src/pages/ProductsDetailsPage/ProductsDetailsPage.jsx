@@ -78,20 +78,35 @@ const ProductDetailsPage = () => {
                         <Loader />
                         :
                         <>
-                            <h1 className="profileTitle">{product.title} Details</h1>
+                            <Row className="align-items-center">
 
-                            {
+                                <Col>
+                                    <h1 className="profileTitle">{product.title}</h1>
 
-                                user?._id !== product?.owner._id
-                                    ?
-                                    <>
-                                        <Link to={`/products/${_id}/purchase`}>
-                                            <Button className="buttonBuy" variant="warning" size="sm" id={_id}>BUY NOW</Button>
-                                        </Link>
-                                    </>
-                                    :
-                                    <p>Your Product</p>
-                            }
+                                </Col>
+
+                                <Col>
+
+                                    {
+
+                                        user?._id !== product?.owner._id
+                                            ?
+                                            <>
+                                                <Link to={`/products/${_id}/purchase`}>
+                                                    <Button className="buttonBuy" variant="warning" size="sm" id={_id}>BUY NOW</Button>
+                                                </Link>
+                                            </>
+                                            :
+                                            <p>Your Product</p>
+                                    }
+
+                                </Col>
+
+
+                            </Row>
+
+
+
                             <hr />
 
 
@@ -168,18 +183,21 @@ const ProductDetailsPage = () => {
                                             <Card.Body>
 
                                                 <Card >
-                                                    <Row>
-                                                        <Col >
-                                                            <p> <img src={bid.owner?.avatar} alt="" />{bid.content} €</p>
+                                                    <Row className="align-items-center">
+                                                        <Col>
 
                                                             <p> <img src={bid.owner?.avatar} alt="" />{bid.content} €</p>
+
+                                                        </Col >
+                                                        <Col >
+
 
                                                             {
                                                                 user?._id === product?.owner._id
                                                                 &&
                                                                 <>
-                                                                    <Button variant="warning" size="sm" onClick={() => setShowModal3(true)}>ACCEPT</Button>
-                                                                    <Button variant="alert" size="sm" value={JSON.stringify({ bidOwnerId: bid?.owner?._id, bidAmount: bid?.content, bidOwnerFunds: bid?.owner?.funds, bidID: bid?._id })} onClick={handleDenny}>DENY</Button>
+                                                                    <Button variant="transparent" size="sm" onClick={() => setShowModal3(true)}>ACCEPT</Button>
+                                                                    <Button variant="transparent" size="sm" value={JSON.stringify({ bidOwnerId: bid?.owner?._id, bidAmount: bid?.content, bidOwnerFunds: bid?.owner?.funds, bidID: bid?._id })} onClick={handleDenny}>DENY</Button>
                                                                     {/* <Button variant="alert" size="sm" value={{ ownerId: bid?.owner?._id, content: bid?.content }} onClick={handleDenny}>DENY</Button> */}
                                                                 </>
                                                             }
@@ -206,7 +224,7 @@ const ProductDetailsPage = () => {
             }
 
 
-        </Container>
+        </Container >
     )
 }
 
