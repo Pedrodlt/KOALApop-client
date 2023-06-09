@@ -79,17 +79,12 @@ const ProductDetailsPage = () => {
 
                                 <Col>
 
-
-
                                 </Col>
 
 
                             </Row>
 
-
-
                             <hr />
-
 
                             <Row>
 
