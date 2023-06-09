@@ -66,7 +66,7 @@ const UserDetailsPage = () => {
                                     {
                                         user?._id === profileUser?._id &&
                                         <p>Wallet💰 : {profileUser.funds}€
-                                            <Button className="mx-3 button" size="sm" onClick={() => setShowModal2(true)}>Add Funds</Button>
+                                            <Button className="mx-3 buttonAdd" size="sl" onClick={() => setShowModal2(true)}>Add Funds</Button>
                                         </p>
                                     }
                                     <hr />
@@ -96,7 +96,7 @@ const UserDetailsPage = () => {
                                     <hr />
 
                                     <Link to="/users/list">
-                                        <Button size="sm" variant="dark">BACK</Button>
+                                        <Button size="sl" variant="dark" >BACK</Button>
                                     </Link>
 
                                     {
@@ -104,8 +104,8 @@ const UserDetailsPage = () => {
                                         &&
                                         <>
 
-                                            <Button className="buttonEdit" variant="warning" size="sm" onClick={() => setShowModal(true)}>EDIT</Button>
-                                            <Button variant="warning" size="sm" onClick={() => handleDelete()}>DELETE</Button>
+                                            <Button className="mx-2 buttonEdit" variant="warning" size="sl" onClick={() => setShowModal(true)}>EDIT</Button>
+                                            <Button variant="danger" size="sl" onClick={() => handleDelete()}>DELETE</Button>
                                         </>
                                     }
 
