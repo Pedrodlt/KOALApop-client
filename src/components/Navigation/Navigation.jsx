@@ -50,14 +50,11 @@ const Navigation = () => {
                                         <Link to="/products/list" className='navTitle'>Shop</Link>
                                     </Nav.Link>
                                     <Nav.Link as="span">
-                                        <Link to="/products/list" className='navTitle'>Auction House</Link>
-                                    </Nav.Link>
-                                    <Nav.Link as="span">
                                         <Link to="/users/list" className='navTitle'>Users</Link>
                                     </Nav.Link>
                                 </Nav>
                                 <Nav.Link as="span">
-                                    <Link to={`/users/${user._id}`} className='navTitle'>¡Heleu, {profileUser?.username}! 💰{profileUser?.funds}€</Link>
+                                    <Link to={`/users/${user._id}`} className='navTitle'>¡Heleu, {profileUser?.username}!</Link>
 
                                 </Nav.Link>
                                 <Nav.Link className='navTitle pointer justify-content-right mx-2' style={{ color: 'rgb(16, 203, 236)' }} as="span" onClick={handleLogout}>Logout</Nav.Link>

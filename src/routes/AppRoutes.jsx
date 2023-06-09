@@ -19,14 +19,12 @@ const AppRoutes = () => {
             <Route path="/register" element={<SignUpPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/products/list" element={<ProductsListPage />} />
-            <Route path="/products/:_id" element={<ProductDetailsPage />} />
-            <Route path="/users/list" element={<UsersListPage />} />
-            <Route path="/products/:product_id/purchase" element={<PurchasePage />} />
 
-
-
-            <Route path="/users/:_id" element={<PrivateRoutes />}>
-                <Route path="" element={<UserDetailsPage />} />
+            <Route element={<PrivateRoutes />}>
+                <Route path="/users/:_id" element={<UserDetailsPage />} />
+                <Route path="/products/:_id" element={<ProductDetailsPage />} />
+                <Route path="/users/list" element={<UsersListPage />} />
+                <Route path="/products/:product_id/purchase" element={<PurchasePage />} />
             </Route>
 
             <Route path="*" element={<h1>404</h1>} />

@@ -74,7 +74,7 @@ const UserDetailsPage = () => {
                                     <Row>
                                         {
                                             profileUser?.purchasedProduct.map((eachPurchasedProduct) => {
-
+                                                console.log(eachPurchasedProduct.image)
                                                 return (
 
                                                     <>
