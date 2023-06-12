@@ -26,11 +26,6 @@ const UserListPage = () => {
         <Container>
 
             <h1>USERS LIST</h1>
-            {/* 
-            {
-                user && <Button variant="dark" size="sm" onClick={() => setShowModal(true)}>Create New User</Button>
-            } */}
-
             <hr />
             <Row>
                 {
@@ -38,7 +33,7 @@ const UserListPage = () => {
                         ?
                         <Loader />
                         :
-                        <UsersList users={users} />//ESTE ES EL COMPONENTE PENDIENTE
+                        <UsersList users={users} />
                 }
             </Row>
 

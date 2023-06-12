@@ -17,7 +17,7 @@ const Navigation = () => {
 
     const navigate = useNavigate()
 
-    const variant = theme === 'light' ? 'dark' : 'light'
+    // const variant = theme === 'light' ? 'dark' : 'light'
 
     useEffect(() => {
         if (user) {
@@ -69,11 +69,7 @@ const Navigation = () => {
                                 </Nav.Link>
                             </>
                     }
-                    {/* <div className="justify-content-end">
-                        <Navbar.Text className='navTitle' style={{ color: 'white' }} onClick={switchTheme}>
-                            {theme === 'dark' ? '☼' : '☾'}
-                        </Navbar.Text>
-                    </div>*/}
+
                 </Navbar.Collapse>
             </Container>
         </Navbar >

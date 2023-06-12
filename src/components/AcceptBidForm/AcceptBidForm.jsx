@@ -19,10 +19,6 @@ const AcceptBidForm = ({ closeModal, updateList, bidOwner, productPrice, bidCont
         const updatedProduct = {
             bought: productSold
         }
-        // const updateFunds = () => {
-        //     const newFunds = user.funds = user.funds + parseInt(bidContent)
-        //     return newFunds
-        // }
         const newFunds = user.funds + parseInt(bidContent)
         const dennyBid = bidOwnerFunds + parseInt(bidContent)
 

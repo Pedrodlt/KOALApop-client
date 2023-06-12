@@ -12,8 +12,6 @@ const HomePage = () => {
     const [productsListClothing, setProductsListClothing] = useState()
     const [productsListElectronic, setProductsListElectronic] = useState()
 
-    // const firstFourProducts2 = productsList.filter(elm => elm.category === 'Clothing')
-
     useEffect(() => {
         loadProducts()
     }, [])

@@ -16,7 +16,7 @@ const ProductDetailsPage = () => {
     const { user } = useContext(AuthContext)
 
     const [showModal, setShowModal] = useState(false)
-    const [showModal3, setShowModal3] = useState(false)
+    const [showModalBid, setshowModalBid] = useState(false)
 
     const [product, setProduct] = useState()
 
@@ -140,7 +140,7 @@ const ProductDetailsPage = () => {
                                         </Col>
                                         :
                                         <Col md={{ span: 4 }}>
-                                            {/* YOUR PRODUCT */}
+                                            {/* YOUR PRODUCT MESSAGE*/}
                                         </Col>
                                 }
 
@@ -187,17 +187,17 @@ const ProductDetailsPage = () => {
                                                                 user?._id === product?.owner._id
                                                                 &&
                                                                 <>
-                                                                    <Button variant="transparent" size="sm" onClick={() => setShowModal3(true)}>{/* ACCEPT */}✅</Button>
+                                                                    <Button variant="transparent" size="sm" onClick={() => setshowModalBid(true)}>{/* ACCEPT */}✅</Button>
                                                                     <Button variant="transparent" size="sm" value={JSON.stringify({ bidOwnerId: bid?.owner?._id, bidAmount: bid?.content, bidOwnerFunds: bid?.owner?.funds, bidID: bid?._id })} onClick={handleDenny}>❌{/* DENY */}</Button>
-                                                                    {/* <Button variant="alert" size="sm" value={{ ownerId: bid?.owner?._id, content: bid?.content }} onClick={handleDenny}>DENY</Button> */}
+
                                                                 </>
                                                             }
-                                                            <Modal show={showModal3} onHide={() => setShowModal3(false)}>
+                                                            <Modal show={showModalBid} onHide={() => setshowModalBid(false)}>
                                                                 <Modal.Header closeButton>
                                                                     <Modal.Title>ACCEPT BID ?</Modal.Title>
                                                                 </Modal.Header>
                                                                 <Modal.Body>
-                                                                    <AcceptBidForm closeModal={() => setShowModal3(false)} updateList={loadProduct} productPrice={product?.price} bidContent={bid.content} bidOwner={bid?.owner?._id} bidOwnerFunds={bid?.owner?.funds} />
+                                                                    <AcceptBidForm closeModal={() => setshowModalBid(false)} updateList={loadProduct} productPrice={product?.price} bidContent={bid.content} bidOwner={bid?.owner?._id} bidOwnerFunds={bid?.owner?.funds} />
                                                                 </Modal.Body>
                                                             </Modal>
                                                         </Col>

@@ -34,10 +34,6 @@ class BidService {
         console.log(product_id)
         return this.api.put(`/${product_id}/auctionProduct`, { bid_id })
     }
-
-    // deleteProduct(product_id) {
-    //     return this.api.delete(`/deleteProduct/${product_id}`)
-    // }
 }
 
 const bidService = new BidService()

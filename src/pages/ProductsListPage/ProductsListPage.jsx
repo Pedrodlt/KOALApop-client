@@ -64,10 +64,9 @@ const ProductsListPage = ({ closeModal, updateList }) => {
                 {
                     !products
                         ?
-                        // <h1>CHARGING.....</h1>
                         <Loader />
                         :
-                        <ProductsList productsList={productsList} />//ESTE ES EL COMPONENTE PENDIENTE
+                        <ProductsList productsList={productsList} />
                 }
             </Row>
 

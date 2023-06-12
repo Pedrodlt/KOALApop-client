@@ -62,22 +62,6 @@ const NewProductForm = ({ closeModal, updateList }) => {
             .catch(err => {
                 setLoadingImage(false)
             })
-
-
-        // setLoadingImage(true)
-
-        // const formData = new FormData()
-        // formData.append('imageData', e.target.files[0])
-
-        // uploadServices
-        //     .uploadimage(formData)
-        //     .then(res => {
-        //         setProductData({ ...productData, image: res.data.cloudinary_url })
-        //         setLoadingImage(false)
-        //     })
-        //     .catch(err => {
-        //         setLoadingImage(false)
-        //     })
     }
 
     return (

@@ -17,9 +17,9 @@ const UserDetailsPage = () => {
 
     const [profileUser, setProfileUser] = useState()
 
-    const [showModal, setShowModal] = useState(false)
+    const [showModalEdit, setshowModalEdit] = useState(false)
 
-    const [showModal2, setShowModal2] = useState(false)
+    const [showModalFunds, setshowModalFunds] = useState(false)
 
     const navigate = useNavigate()
 
@@ -66,7 +66,7 @@ const UserDetailsPage = () => {
                                     {
                                         user?._id === profileUser?._id &&
                                         <p>Wallet💰 : {profileUser.funds}€
-                                            <Button className="mx-3 buttonAdd" size="sl" onClick={() => setShowModal2(true)}>Add Funds</Button>
+                                            <Button className="mx-3 buttonAdd" size="sl" onClick={() => setshowModalFunds(true)}>Add Funds</Button>
                                         </p>
                                     }
                                     <hr />
@@ -104,7 +104,7 @@ const UserDetailsPage = () => {
                                         &&
                                         <>
 
-                                            <Button className="mx-2 buttonEdit" variant="warning" size="sl" onClick={() => setShowModal(true)}>EDIT</Button>
+                                            <Button className="mx-2 buttonEdit" variant="warning" size="sl" onClick={() => setshowModalEdit(true)}>EDIT</Button>
                                             <Button variant="danger" size="sl" onClick={() => handleDelete()}>DELETE</Button>
                                         </>
                                     }
@@ -117,21 +117,21 @@ const UserDetailsPage = () => {
 
                             </Row>
                             {/* EDIT FORM */}
-                            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                            <Modal show={showModalEdit} onHide={() => setshowModalEditEdit(false)}>
                                 <Modal.Header closeButton>
                                     <Modal.Title>Edit User</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
-                                    <EditUserForm closeModal={() => setShowModal(false)} updateList={loadUser} />
+                                    <EditUserForm closeModal={() => setshowModalEdit(false)} updateList={loadUser} />
                                 </Modal.Body>
                             </Modal>
                             {/* FUNDS FORM */}
-                            <Modal show={showModal2} onHide={() => setShowModal2(false)}>
+                            <Modal show={showModalFunds} onHide={() => setshowModalFunds(false)}>
                                 <Modal.Header closeButton>
                                     <Modal.Title>Edit User</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
-                                    <AddFundsForm closeModal={() => setShowModal2(false)} updateList={loadUser} />
+                                    <AddFundsForm closeModal={() => setshowModalFunds(false)} updateList={loadUser} />
                                 </Modal.Body>
                             </Modal>
                         </>

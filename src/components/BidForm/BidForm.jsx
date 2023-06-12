@@ -4,7 +4,6 @@ import { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context'
 import { ToastContext } from '../../contexts/toast.context'
-// import commentsService from "../../services/comment.services"
 import bidService from "../../services/bid.services"
 import userService from "../../services/user.services"
 import { BID_DENIED } from "../../consts/user-messages-consts"
@@ -19,8 +18,6 @@ const BidForm = ({ updateBids }) => {
     const [userFound, setUserFound] = useState()
 
     const { _id } = useParams()
-
-    // const [initialFunds, setInitialFunds] = useState()
 
     useEffect(() => {
         getUserLogged()

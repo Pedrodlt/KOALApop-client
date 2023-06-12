@@ -1,10 +1,8 @@
 import { useState, useEffect, useContext } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import productService from "../../services/products.services"
-// import uploadServices from "../../services/upload.services"
 import FormError from "../FormError/FormError"
 import { useNavigate, useParams } from "react-router-dom"
-// import userService from "../../services/user.services"
 import { AuthContext } from "../../contexts/auth.context"
 import Loader from "../Loader/Loader"
 import { ToastContext } from "../../contexts/toast.context"
@@ -61,16 +59,6 @@ const PurchaseForm = ({ /* updateList, _id, */ data }) => {
             .catch(err => {
                 setErrors(err.response.data.errorMessages)
             })
-
-        // productService
-        //     .editProduct(data._id, { buyerInfo: buyerData })
-        //     .then((response) => {
-        //         console.log(response)
-        //         navigate('/')
-        //     })
-        //     .catch(err => {
-        //         setErrors(err.response.data.errorMessages)
-        //     })
     }
 
     return (
